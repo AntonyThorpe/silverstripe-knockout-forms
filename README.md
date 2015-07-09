@@ -1,0 +1,2 @@
+# silverstripe-knockout-forms
+Provides an enhanced UX for Silverstripe forms using Knockout MVVM JavaScript library plus an associated validation plugin.  Silverstripe creates a form, specifying the Knockout styled ones, and validation needs are added to observables via a Knockout extension.  Default messages are available or can be customised.  The form will only submit once all front-end validation rules are satisfied.
