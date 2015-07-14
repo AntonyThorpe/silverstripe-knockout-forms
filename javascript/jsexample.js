@@ -1,4 +1,4 @@
-(function(ko, $) {
+(function(ko) {
 	"use strict";
 
 	/**
@@ -8,8 +8,8 @@
 	 */
 	// 
 	ko.validation.init({
-		insertMessages: false,
-		decorateElement: true
+		insertMessages: true, // set to false for tooltip
+		messagesOnModified: true
 	});
 
 
@@ -18,7 +18,6 @@
 	 *
 	 * Knockout Validation custom rule.  Used to check that passwords match
 	 */
-	// 
 	ko.validation.rules["areSame"] = {
 		getValue: function(o) {
 			return (typeof o === 'function' ? o() : o);
@@ -29,8 +28,42 @@
 		message: 'The fields must have the same value'
 	};
 
+	/**
+	 * ViewModel 
+	 */
+	function viewModel() {
+
+		this.spaceship = ko.observable().extend({
+			required: true,
+			maxLength: 100
+		});
+
+		this.flightMenu = ko.observable().extend({
+			required: true
+		});
+
+		this.seatNumber = ko.observable().extend({
+			required: true,
+			number: true,
+			min: 1,
+			max: 20
+		});
+
+		this.canSave = ko.pureComputed(function() {
+			return this.spaceship.isValid() && this.flightMenu.isValid() && this.seatNumber.isValid();
+		}, this);
+
+
+		this.flightMenu.subscribe(function(value) {
+			//console.log(value);
+		});
+
+
+	}
+
+
 
 	ko.validation.registerExtenders();
-	ko.applyBindings(new viewModel());
+	ko.applyBindings(new viewModel(), document.getElementById("body"));
 
-})(ko, $);
+})(ko);
