@@ -1,7 +1,7 @@
 <?php
 
 /**
- * KnockoutDropdownfieldTest
+ * KnockoutDropdownFieldTest
  *
  * @package Silverstripe Knockout Forms
  * @subpackage tests

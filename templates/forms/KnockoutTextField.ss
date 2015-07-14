@@ -1,1 +1,1 @@
-<input data-bind="{$BindingType}: {$Observable}<% if $Value %>, setKnockout:{value:'{$Value}'}<% end_if %><% if $OtherBindings %>, {$OtherBindings}<% end_if %><% if $HasFocus %>, hasFocus: true<% end_if %>" $AttributesHTML />
+<input data-bind="$BindingType: $Observable<% if $Value %>, setKnockout:{value:'$Value.JS'}<% end_if %><% if $OtherBindings %>, $OtherBindings<% end_if %><% if $HasFocus %>, hasFocus: true<% end_if %>" $AttributesHTML />

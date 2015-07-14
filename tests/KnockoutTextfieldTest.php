@@ -1,6 +1,6 @@
 <?php
 /**
- * KnockoutTextfieldTest
+ * KnockoutTextFieldTest
  *
  * @package Silverstripe Knockout Forms
  * @subpackage tests

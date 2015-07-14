@@ -14,7 +14,9 @@ class KnockoutFormTest extends FunctionalTest {
 		$this->assertEquals(200, $page->getStatusCode(), "a page should load");
 		
 		$this->assertContains('<input data-bind="textInput: spaceship, hasFocus: true"', $page->getBody(), 'Databind attribute in input element');
+		$this->assertContains("setKnockout:{value:'Enterprise\'s Voyage'}", $page->getBody(), 'Comma escaped in HTML for javascript');
 		$this->assertContains('<select data-bind="value: menu"', $page->getBody(), 'Databind attribute applied to select element');
+		$this->assertContains('<input data-bind="textInput: seatNumber, setKnockout:{value:4}"', $page->getBody(), 'KnockoutNumericField works');
 		
 		$this->assertContains('<input data-bind="enable: canSaveInterGalacticAction, css:{ \'FormAction_Disabled\': !canSaveInterGalacticAction() }" type="submit"', $page->getBody(), 'Databind attribute in submit button');
 
@@ -45,8 +47,13 @@ class KnockoutFormTest_Controller extends Controller implements TestOnly {
 				KnockoutTextField::create('Spaceship', 'Spaceship')
 					->setObservable('spaceship')
 					->setHasFocus(true),
+				KnockoutTextField::create('FieldWithComma', 'FieldWithComma')
+					->setObservable('fieldwithcomma')
+					->setValue("Enterprise's Voyage"),
 				KnockoutDropdownField::create('Menu', 'Space Menu', array('1'=>'Light Speed Salad','2'=>'Comet Custard'))
 					->setObservable('menu'),
+				KnockoutNumericField::create('SeatNumber', 'Seat Number', 4)
+					->setObservable('seatNumber'),
 				CheckboxSetField::create('Boxes', null, array('1'=>'one','2'=>'two'))
 			),
 			FieldList::create(
