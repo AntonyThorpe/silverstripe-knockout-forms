@@ -5,7 +5,7 @@ require_once('Common.php');
 /**
  * KnockoutTextField
  * 
- * Creates a {@link TextField} and an additional data-bind attribute that links to a Knockout obervable
+ * Creates a {@link TextField} with an additional data-bind attribute that links to a Knockout obervable
  *
  * @package Silverstripe Knockout Forms
  */
@@ -32,7 +32,7 @@ class KnockoutTextField extends TextField {
         "Observable" => "Varchar",
         "BindingType" => "Varchar",
         "OtherBindings" => "Varchar",
-        "HasFocus" => "Varchar"
+        "HasFocus" => "Boolean"
     );
 
 	/**
@@ -47,7 +47,7 @@ class KnockoutTextField extends TextField {
 	 * @param null|Form $form
 	 */
 	public function __construct($name, $title = null, $value = '', $maxLength = null, $form = null) {
-		parent::__construct($name, $title, $value);
+		parent::__construct($name, $title, $value, $maxLength, $form);
 		$this->addExtraClass('text');
 	}
 
