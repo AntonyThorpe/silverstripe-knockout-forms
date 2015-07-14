@@ -5,7 +5,7 @@ require_once('Common.php');
 /**
  * KnockoutDropdownField
  * 
- * Creates a {@link DropdownField} and an additional data-bind attribute that 
+ * Creates a {@link DropdownField} with an additional data-bind attribute that 
  * links to a Knockout obervable
  *
  * @package Silverstripe Knockout Forms
@@ -31,7 +31,7 @@ class KnockoutDropdownField extends DropdownField {
         "Observable" => "Varchar",
         "BindingType" => "Varchar",
         "OtherBindings" => "Varchar",
-        "HasFocus" => "Varchar"
+        "HasFocus" => "Boolean"
     );
 	
 	/**
@@ -42,38 +42,7 @@ class KnockoutDropdownField extends DropdownField {
 	 * @param Form $form The parent form
 	 */
 	public function __construct($name, $title=null, $source=array(), $value='', $form=null) {
-		parent::__construct($name, ($title===null) ? $name : $title, $value, $form);
+		parent::__construct($name, $title, $source, $value, $form);
 		$this->setAttribute('class','dropdown');
 	}
-	
-	
-	/**
-	 * getDataBindAttributeValue
-	 *
-	 * Provides the value part of the data-bind HTML attribute
-	 * @return string
-	 */
-	public function getDataBindAttributeValue() {
-		if(!$this->observable){
-			user_error("Observable needs to be set on KnockoutDropdownField.  is setObservable('nameofobservable')",E_USER_WARNING);
-		}
-
-		$result = "value: " . $this->observable;
-
-		if($this->value){
-			$result = $result . ", setKnockout:{value:'" . Convert::raw2att($this->value) . "'}";
-		}
-
-		if($this->otherBindings){
-			$result  = $result . ", " . $this->otherBindings;
-		}
-
-		if($this->getHasFocus()){
-			$result = $result . ", hasFocus: true";
-		}
-
-		return $result;
-	}	
-
-
 }
