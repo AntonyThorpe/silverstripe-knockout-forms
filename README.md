@@ -1,5 +1,5 @@
 # silverstripe-knockout-forms
-Provides an enhanced UX for Silverstripe forms using Knockout MVVM JavaScript library plus an associated validation plugin
+Provides an enhanced UX with Silverstripe forms using Knockout MVVM JavaScript library plus an associated validation plugin
 
 ## Why use this Silverstripe module?
 * Prevent incorrect form submission
