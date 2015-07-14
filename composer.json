@@ -6,14 +6,14 @@
 	"keywords": ["silverstripe", "forms", "form validation", "Knockoutjs", "Knockout-Validation"],
 	"require": {
 		"php": ">=5.4.0",
-		"silverstripe/framework": ">=3.1",
+		"silverstripe/framework": ">=3.1"
 	},
 	"extra": {
 		"installer-name": "module_silverstripeknockoutforms"
 	},
 	"support": {
 		"issues": "https://github.com/antonythorpe/silverstripe-knockout-forms/issues",
-		"source": "https://github.com/antonythorpe/silverstripe-knockout-forms/",
+		"source": "https://github.com/antonythorpe/silverstripe-knockout-forms/"
 	},
 	"minimum-stability": "stable"
 }
