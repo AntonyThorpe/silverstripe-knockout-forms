@@ -31,7 +31,7 @@ class KnockoutFormAction extends FormAction {
         "Observable" => "Varchar",
         "BindingType" => "Varchar",
         "OtherBindings" => "Varchar",
-        "HasFocus" => "Varchar"
+        "HasFocus" => "Boolean"
     );
 
 	/**
