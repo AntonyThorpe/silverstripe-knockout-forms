@@ -49,8 +49,12 @@
 			max: 20
 		});
 
+		this.email = ko.observable().extend({
+			email: true
+		});
+
 		this.canSave = ko.pureComputed(function() {
-			return this.spaceship.isValid() && this.flightMenu.isValid() && this.seatNumber.isValid();
+			return this.spaceship.isValid() && this.flightMenu.isValid() && this.seatNumber.isValid() && this.email.isValid();
 		}, this);
 
 

@@ -18,7 +18,7 @@ Add validation needs to the observables in a Knockoutjs viewModel.  Then, utilis
 
 ## Installation
 
-To install add the below to your `composer.json` file and `composer update`:
+To install add the below to your `composer.json` file and `composer update --no-dev`:
 ```json
 {
   "repositories": [
@@ -28,7 +28,7 @@ To install add the below to your `composer.json` file and `composer update`:
     }
   ],
   "require": {
-    "antonythorpe/silverstripe-knockout-forms": "1.0.0"
+    "antonythorpe/silverstripe-knockout-forms": "1.0.2"
   }
 }
 ```

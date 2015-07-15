@@ -20,6 +20,9 @@ class KnockoutFormTest extends FunctionalTest {
 		
 		$this->assertContains('<input data-bind="enable: canSaveInterGalacticAction, css:{ \'FormAction_Disabled\': !canSaveInterGalacticAction() }" type="submit"', $page->getBody(), 'Databind attribute in submit button');
 
+		$this->assertContains('<input data-bind="textInput: email, setKnockout:{value:\'steven@sanderson.com\'}"', $page->getBody(), 'Databind attribute applied to input element for email field');
+		$this->assertContains('class="email text"', $page->getBody(), 'KnockoutEmailField has a class of "email text"');
+
 	}
 }
 
@@ -54,6 +57,9 @@ class KnockoutFormTest_Controller extends Controller implements TestOnly {
 					->setObservable('menu'),
 				KnockoutNumericField::create('SeatNumber', 'Seat Number', 4)
 					->setObservable('seatNumber'),
+				KnockoutEmailField::create('Email', 'Email')
+					->setObservable('email')
+					->setValue('steven@sanderson.com'),
 				CheckboxSetField::create('Boxes', null, array('1'=>'one','2'=>'two'))
 			),
 			FieldList::create(
