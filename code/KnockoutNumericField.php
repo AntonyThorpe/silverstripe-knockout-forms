@@ -19,7 +19,7 @@ class KnockoutNumericField extends NumericField {
 	 * KnockoutNumericField needs either 'value' or 'textInput' as a key for the 'data-bind' HTML attribute
 	 *
 	 * @var string data-bind attribute key
-	 * @example  data-bind="text: name, valueUpdate: 'input'" - the binding type is: text.
+	 * @example  data-bind="input: name, valueUpdate: 'input'" - the binding type is: input.
 	 */
 	protected $bindingType = "textInput";
 

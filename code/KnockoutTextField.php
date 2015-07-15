@@ -19,7 +19,7 @@ class KnockoutTextField extends TextField {
 	 * KnockoutTextField needs either 'value' or 'textInput' as a key for the 'data-bind' HTML attribute
 	 *
 	 * @var string data-bind attribute key
-	 * @example  data-bind="text: name, valueUpdate: 'input'" - the binding type is: text.
+	 * @example  data-bind="input: name, valueUpdate: 'input'" - the binding type is: input.
 	 */
 	protected $bindingType = "textInput";
 
@@ -36,7 +36,7 @@ class KnockoutTextField extends TextField {
     );
 
 	/**
-	 * Returns an input field.
+	 * Returns an input field
 	 *
 	 * Set the class of 'text' to match TextField
 	 *
