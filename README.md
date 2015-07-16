@@ -166,6 +166,18 @@ this.flightMenu.subscribe(function(value) {
 ## Extensions
 - Add a [Bootstrap Tooltip Binding Handler](https://github.com/AntonyThorpe/knockout-validation-bootstrap-tooltip.git) to present errors via a tooltip.
 
+## Form Fields from other Silverstripe Modules
+Replace fields in another Silverstripe Module through [extension points](http://docs.silverstripe.org/en/3.1/developer_guides/extending/extensions/) with Knockout ones.  For example use the replaceField method:
+```php
+function updateForm(&$fields){
+  $fields->replaceField('FirstName', KnockoutTextField::create('FirstName', 'FirstName')
+    ->setObservable('firstName')
+    ->setHasFocus(true)
+    ->setValue($fields->fieldByName('FirstName')->Value())
+  );
+}
+```
+
 ## ToDo
 - Extend beyond text, numeric and dropdowns to checkboxes and radio buttons, etc.
 
