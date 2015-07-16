@@ -8,8 +8,8 @@
  */
 class KnockoutDropdownFieldTest extends SapphireTest {
 
-	public function testKnockoutDropdownfield() {
-		$field = new KnockoutDropdownfield("SpaceExploration", "Space Exploration", array(
+	public function testKnockoutDropdownField() {
+		$field = new KnockoutDropdownField("SpaceExploration", "Space Exploration", array(
 			"Rocket" => "Rocket",
 			"Launcher" => "Launcher",
 			"Blast Off" => "Blast Off"

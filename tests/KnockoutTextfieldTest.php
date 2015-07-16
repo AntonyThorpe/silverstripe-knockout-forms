@@ -7,8 +7,8 @@
  */
 class KnockoutTextFieldTest extends SapphireTest {
 
-	public function testKnockoutTextfield() {
-		$field = new KnockoutTextfield("MyField", "My Field", null, 50);
+	public function testKnockoutTextField() {
+		$field = new KnockoutTextField("MyField", "My Field", null, 50);
 		$field->setObservable('spaceship')->setBindingType('value')->setOtherBindings("valueUpdate: 'input'")->setHasFocus(true);
 		$this->assertEquals("spaceship", $field->getObservable(), "observable is set");
 		$this->assertEquals("valueUpdate: 'input'", $field->getOtherBindings(), "other bindings are set");
