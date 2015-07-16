@@ -28,7 +28,7 @@ To install add the below to your `composer.json` file and `composer update --no-
     }
   ],
   "require": {
-    "antonythorpe/silverstripe-knockout-forms": "1.0.2"
+    "antonythorpe/silverstripe-knockout-forms": "1.1.0"
   }
 }
 ```
@@ -71,11 +71,15 @@ this.email = ko.observable().extend({
 this.comments = ko.observable().extend({
   maxLength: 500
 });
+
+this.accessories = ko.observable().extend({
+  required: true
+});
 ```
 Knockout-Validation has a number of built in [rules](https://github.com/Knockout-Contrib/Knockout-Validation/wiki/Native-Rules) or you can add some [custom ones](https://github.com/Knockout-Contrib/Knockout-Validation/wiki/User-Contributed-Rules) (e.g. the `areSame` rule in the `jsexample.js` file).
 
 ### Knockout Form Fields
-Creating a `KnockoutTextField` is identical to that of `TextField`, and ditto with `KnockoutDropdownField` and `KnockoutNumericField` with the `DropdownField` and `NumericField`, respectively.  
+Creating a `KnockoutTextField` is identical to that of `TextField`, and ditto with all the others. 
 ```php
 $fields = new FieldList(
   KnockoutTextField::create('Spaceship', 'Spaceship', "The Enterprise")
@@ -94,7 +98,14 @@ $fields = new FieldList(
     ->setAttribute('placeholder', 'yourname@example.com')
     ->setObservable('email'),
   KnockoutTextareaField::create('Comments', 'Comments')
-    ->setObservable('comments')
+    ->setObservable('comments'),
+  KnockoutOptionsetField::create('Accessories', 'Accessories', array(
+    'Flying High DVD' => 'Flying High DVD',
+    'Zero Gravity Pillow' => 'Zero Gravity Pillow',
+    'Rocket Replica' => 'Rocket Replica'
+  ))
+    ->setObservable('accessories')
+    ->setValue('Zero Gravity Pillow')
 );
 ```
 The above fields create the below HTML within the div.middleColumn.  Note the contents of the `data-bind` attribute.
@@ -113,6 +124,8 @@ The above fields create the below HTML within the div.middleColumn.  Note the co
 <input data-bind="textInput: email" type="email" name="Email" class="email text" id="Form_Form_Email" placeholder="yourname@example.com">
 ...
 <textarea data-bind="textInput: comments" name="Comments" class="knockouttextarea textarea" id="Form_Form_Comments" rows="5" cols="20"></textarea>
+...
+<input data-bind="checked: accessories, setKnockout:{value:'Zero Gravity Pillow'}" id="Form_Form_Accessories_ZeroGravityPillow" class="radio" name="Accessories" type="radio" value="Zero Gravity Pillow" checked="">
 ```
 From the above examples you will note some additional methods on the form fields.  They help create the `data-bind` attribute value that you see in the HTML.  These additional methods are common to all Knockout Fields with exception of the disabled methods in `KnockoutFormAction`.  All setters return $this so that they can be chained.  All the getters are accessible through the templates.
 
@@ -179,7 +192,7 @@ function updateForm(&$fields){
 ```
 
 ## ToDo
-- Add additional fields e.g. checkboxes, passwords, etc.
+- Add additional fields e.g. ConfirmedPasswordField, etc.
 
 ## Pull Requests are Welcome
 The recommended approach is to extend an existing field.  Ensure that the appropriate Binding Type is specified (see knockoutjs.com for the binding type needed) and cast getters from Common.php and any new get methods you create.  
