@@ -23,6 +23,9 @@ class KnockoutFormTest extends FunctionalTest {
 		$this->assertContains('<input data-bind="textInput: email, setKnockout:{value:\'steven@sanderson.com\'}"', $page->getBody(), 'Databind attribute applied to input element for email field');
 		$this->assertContains('class="email text"', $page->getBody(), 'KnockoutEmailField has a class of "email text"');
 
+		$this->assertContains('<textarea data-bind="textInput: comments"', $page->getBody(), 'Databind attribute applied to the textareafield');
+		$this->assertContains('class="knockouttextarea textarea"', $page->getBody(), 'KnockoutTextareaField has a class of "textarea text"');
+
 	}
 }
 
@@ -60,6 +63,8 @@ class KnockoutFormTest_Controller extends Controller implements TestOnly {
 				KnockoutEmailField::create('Email', 'Email')
 					->setObservable('email')
 					->setValue('steven@sanderson.com'),
+				KnockoutTextareaField::create('comments', 'Comments')
+					->setObservable('comments'),
 				CheckboxSetField::create('Boxes', null, array('1'=>'one','2'=>'two'))
 			),
 			FieldList::create(

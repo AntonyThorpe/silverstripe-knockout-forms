@@ -53,8 +53,12 @@
 			email: true
 		});
 
+		this.comments = ko.observable().extend({
+			maxLength: 500
+		});
+
 		this.canSave = ko.pureComputed(function() {
-			return this.spaceship.isValid() && this.flightMenu.isValid() && this.seatNumber.isValid() && this.email.isValid();
+			return this.spaceship.isValid() && this.flightMenu.isValid() && this.seatNumber.isValid() && this.email.isValid() && comments.isValid();
 		}, this);
 
 

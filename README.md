@@ -63,6 +63,14 @@ this.seatNumber = ko.observable().extend({
 	min: 1,
 	max: 20
 });
+
+this.email = ko.observable().extend({
+  email: true
+});
+
+this.comments = ko.observable().extend({
+  maxLength: 500
+});
 ```
 Knockout-Validation has a number of built in [rules](https://github.com/Knockout-Contrib/Knockout-Validation/wiki/Native-Rules) or you can add some [custom ones](https://github.com/Knockout-Contrib/Knockout-Validation/wiki/User-Contributed-Rules) (e.g. the `areSame` rule in the `jsexample.js` file).
 
@@ -81,7 +89,12 @@ $fields = new FieldList(
   	->setEmptyString('Select...')
   	->setObservable('flightMenu'),
   KnockoutNumericField::create('SeatNumber', 'Seat Number', 4)
-  	->setObservable('seatNumber')
+  	->setObservable('seatNumber'),
+  KnockoutEmailField::create('Email', 'Email')
+    ->setAttribute('placeholder', 'yourname@example.com')
+    ->setObservable('email'),
+  KnockoutTextareaField::create('Comments', 'Comments')
+    ->setObservable('comments')
 );
 ```
 The above fields create the below HTML within the div.middleColumn.  Note the contents of the `data-bind` attribute.
@@ -96,10 +109,14 @@ The above fields create the below HTML within the div.middleColumn.  Note the co
 </select>
 ...
 <input data-bind="textInput: seatNumber, setKnockout:{value:4}" type="text" name="SeatNumber" value="4" class="numeric text" id="Form_Form_SeatNumber" required="required" aria-required="true">
+...
+<input data-bind="textInput: email" type="email" name="Email" class="email text" id="Form_Form_Email" placeholder="yourname@example.com">
+...
+<textarea data-bind="textInput: comments" name="Comments" class="knockouttextarea textarea" id="Form_Form_Comments" rows="5" cols="20"></textarea>
 ```
 From the above examples you will note some additional methods on the form fields.  They help create the `data-bind` attribute value that you see in the HTML.  These additional methods are common to all Knockout Fields with exception of the disabled methods in `KnockoutFormAction`.  All setters return $this so that they can be chained.  All the getters are accessible through the templates.
 
-### Form Action
+### Knockout Form Action
 Create a Knockout computed variable that responses with true when all the fields are valid:
 ```javascript
 this.canSave = ko.pureComputed(function() {
@@ -117,7 +134,7 @@ $actions = new FieldList(
 ```
 The submit button has the disabled attribute when its observable returns false.  In addition, this field has the method of `setDisabledClass` to dynamically add a class to the input/select element when invalid.  The default class is `FormAction_Disabled`.  
 
-### Debugging
+### Debugging Javascript
 To see the values of an observable create a subscription:
 ```javascript
 this.flightMenu.subscribe(function(value) {

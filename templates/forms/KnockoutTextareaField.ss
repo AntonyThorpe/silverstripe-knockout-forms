@@ -1,0 +1,1 @@
+<textarea data-bind="$BindingType: $Observable<% if $Value %>, setKnockout:{value:'$Value.JS'}<% end_if %><% if $OtherBindings %>, $OtherBindings<% end_if %><% if $HasFocus %>, hasFocus: true<% end_if %>" $AttributesHTML>$Value</textarea>
