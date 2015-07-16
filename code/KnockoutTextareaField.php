@@ -44,7 +44,7 @@ class KnockoutTextareaField extends TextareaField {
 	 * @param mixed $value The value of the field.
 	 */
 	public function __construct($name, $title = null, $value = null) {
-		parent::__construct($name, $title = null, $value = null);
+		parent::__construct($name, $title, $value);
 		$this->addExtraClass('textarea');
 	}
 
