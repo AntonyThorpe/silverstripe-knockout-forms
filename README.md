@@ -179,7 +179,7 @@ function updateForm(&$fields){
 ```
 
 ## ToDo
-- Extend beyond text, numeric and dropdowns to checkboxes and radio buttons, etc.
+- Add additional fields e.g. checkboxes, passwords, etc.
 
 ## Pull Requests are Welcome
 The recommended approach is to extend an existing field.  Ensure that the appropriate Binding Type is specified (see knockoutjs.com for the binding type needed) and cast getters from Common.php and any new get methods you create.  
@@ -201,7 +201,8 @@ class KnockoutNameOfField extends NameOfField {
 	 * bindingType
 	 *
 	 * Knockout needs either 'value' or 'textInput' as a key for the 'data-bind' HTML attribute
-	 *
+	 * Default textInput for live updates
+   *
 	 * @var string data-bind attribute key
 	 * @example  data-bind="textInput: name, etc.
 	 */

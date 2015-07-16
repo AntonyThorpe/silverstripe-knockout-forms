@@ -26,6 +26,9 @@ class KnockoutFormTest extends FunctionalTest {
 		$this->assertContains('<textarea data-bind="textInput: comments"', $page->getBody(), 'Databind attribute applied to the textareafield');
 		$this->assertContains('class="knockouttextarea textarea"', $page->getBody(), 'KnockoutTextareaField has a class of "textarea text"');
 
+		$this->assertContains('data-bind="checked: accessories, setKnockout:{value:\'Zero Gravity Pillow\'}, blah: console.log(\'blast-off\')"', $page->getBody(), 'Databind attribute applied to the radio buttons');
+		$this->assertContains('class="radio"', $page->getBody(), 'KnockoutOptionsetField has a class of "radio"');
+
 	}
 }
 
@@ -63,8 +66,15 @@ class KnockoutFormTest_Controller extends Controller implements TestOnly {
 				KnockoutEmailField::create('Email', 'Email')
 					->setObservable('email')
 					->setValue('steven@sanderson.com'),
-				KnockoutTextareaField::create('comments', 'Comments')
+				KnockoutTextareaField::create('Comments', 'Comments')
 					->setObservable('comments'),
+				KnockoutOptionsetField::create('Accessories', 'Accessories', array(
+	            	'Flying High DVD' => 'Flying High DVD',
+	            	'Zero Gravity Pillow' => 'Zero Gravity Pillow',
+	            	'Rocket Replica' => 'Rocket Replica'
+            	), 'Zero Gravity Pillow')
+					->setObservable('accessories')
+					->setOtherBindings("blah: console.log('blast-off')"),
 				CheckboxSetField::create('Boxes', null, array('1'=>'one','2'=>'two'))
 			),
 			FieldList::create(

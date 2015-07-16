@@ -57,13 +57,17 @@
 			maxLength: 500
 		});
 
+		this.accessories = ko.observable().extend({
+			required: true
+		});
+
 		this.canSave = ko.pureComputed(function() {
 			return this.spaceship.isValid() && this.flightMenu.isValid() && this.seatNumber.isValid() && this.email.isValid() && comments.isValid();
 		}, this);
 
 
-		this.flightMenu.subscribe(function(value) {
-			//console.log(value);
+		this.accessories.subscribe(function(value) {
+			console.log(value);
 		});
 
 
