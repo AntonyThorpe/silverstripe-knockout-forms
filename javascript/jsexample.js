@@ -62,7 +62,7 @@
 		});
 
 		this.canSave = ko.pureComputed(function() {
-			return this.spaceship.isValid() && this.flightMenu.isValid() && this.seatNumber.isValid() && this.email.isValid() && comments.isValid() && accessories.isValid();
+			return this.spaceship.isValid() && this.flightMenu.isValid() && this.seatNumber.isValid() && this.email.isValid() && comments.isValid();
 		}, this);
 
 

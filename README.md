@@ -9,9 +9,9 @@ Provides an enhanced UX with Silverstripe forms using Knockout MVVM JavaScript l
 * Browser support back to ie6
 
 ## How it works 
-Add validation needs to the observables in a Knockoutjs viewModel.  Then, utilising the Knockout Form Fields, use Silverstripe to create the form.  Upon bind, the field values are passed into the observables.  The rules you place upon the observables will control the front-end validation of the form.
+Add validation needs to the observables in a Knockoutjs viewModel.  Next, utilising the Knockout Form Fields, use Silverstripe to create the form.  Upon bind, the field values are passed into the observables.  The rules you place upon the observables will control the front-end validation of the form.
 
-## The Approach of this module
+## The Approach of this Module
 - Extend Silverstripe form fields just enough to place a Knockout observable and value on the element
 - Use Knockout-Validation to validate the fields
 - Disable the submit button until all rules are satisfied
@@ -28,7 +28,7 @@ To install add the below to your `composer.json` file and `composer update --no-
     }
   ],
   "require": {
-    "antonythorpe/silverstripe-knockout-forms": "1.1.0"
+    "antonythorpe/silverstripe-knockout-forms": "1.2.0"
   }
 }
 ```
@@ -136,6 +136,9 @@ this.canSave = ko.pureComputed(function() {
 	// returns true if all the below observables are valid
 	return this.spaceship.isValid() && this.flightMenu.isValid() && this.seatNumber.isValid();
 }, this);
+
+// Or if your ViewModel is relatively simple
+this.canSave = ko.validation.group(this);
 ```
 Link this to the Submit button via the `KnockoutActionField`:
 ```php
@@ -145,7 +148,27 @@ $actions = new FieldList(
    		->setDisabledClass('has-warning')
 );
 ```
-The submit button has the disabled attribute when its observable returns false.  In addition, this field has the method of `setDisabledClass` to dynamically add a class to the input/select element when invalid.  The default class is `FormAction_Disabled`.  
+The button has the disabled attribute when its observable returns false.  In addition, this field has the method of `setDisabledClass` to dynamically add a class to the input/select element when invalid.  The default class is `FormAction_Disabled`. 
+
+### Knockout Form
+To capture form submission via enter & click, add a submit binding handler to the form.  This can be pretty nifty for making Ajax calls.
+```php
+$form = KnockoutForm::create(
+    $this,
+    'Form',
+    FieldList::create( ...
+$form->setSubmit('addToCart');
+```
+In the above example the 'addToCart' is the javascript function that is called upon form submission.
+```html
+<form data-bind="submit: addToCart" ...>
+```
+This provides the form element to the javascript function.
+```javascript
+this.addToCart = function(formElement){
+  
+}
+```
 
 ### Debugging Javascript
 To see the values of an observable create a subscription:
@@ -176,22 +199,28 @@ this.flightMenu.subscribe(function(value) {
 * `setDisabledClass(string)` set the class for the submit button when validation checks return false.  Defaults to `FormAction_Disabled`.
 * `getDisabledClass()` returns the disabled class on the KnockoutFormAction field.
 
+##### Submit Binding (`KnockoutForm` only)
+* `setSubmit(string)` set the javascript function to be called upon form submission.  
+* `getSubmit()` returns the javascript function used on the KnockoutForm.
+
+
 ## Extensions
 - Add a [Bootstrap Tooltip Binding Handler](https://github.com/AntonyThorpe/knockout-validation-bootstrap-tooltip.git) to present errors via a tooltip.
 
-## Integration with other Silverstripe Modules
-Replace fields from another Silverstripe Modules through [extension points](http://docs.silverstripe.org/en/3.1/developer_guides/extending/extensions/) with Knockout ones.  For example use the `replaceField` method:
+## Form Fields from other Silverstripe Modules
+Replace fields in another Silverstripe Module through [extension points](http://docs.silverstripe.org/en/3.1/developer_guides/extending/extensions/) with Knockout ones.  For example use the replaceField method:
 ```php
 function updateForm(&$fields){
   $fields->replaceField('FirstName', KnockoutTextField::create('FirstName', 'FirstName')
     ->setObservable('firstName')
+    ->setHasFocus(true)
     ->setValue($fields->fieldByName('FirstName')->Value())
   );
 }
 ```
 
 ## ToDo
-- Add additional fields e.g. ConfirmedPasswordField, etc.
+- Add additional fields e.g. checkbox field, etc.
 
 ## Pull Requests are Welcome
 The recommended approach is to extend an existing field.  Ensure that the appropriate Binding Type is specified (see knockoutjs.com for the binding type needed) and cast getters from Common.php and any new get methods you create.  
@@ -236,7 +265,11 @@ If needed add the `__construct` function to overriding the field's class.
 
 Adapt the Frameworks form templates to incorporate Knockout's binding handlers and save into `templates/forms`.
 
-Create a model test and update `KnockoutFormTest.php` to test the creation of the binding handler in HTML.
+### Tests
+* Create a model test for the new form field
+* Update `KnockoutFormTest.php` to test the creation of the binding handler in HTML.
+** Add the new Knockout field to the form function within the KnockoutFormTest_Controller class
+** Add a new assertion to the testKnockoutForm function within the KnockoutFormTest class
 
 
 

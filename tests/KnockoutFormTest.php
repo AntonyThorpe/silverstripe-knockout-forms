@@ -8,26 +8,37 @@
  * @subpackage tests
  */
 class KnockoutFormTest extends FunctionalTest {
-	
+
+	public function setUp() {
+		parent::setUp();
+		Config::inst()->update('SSViewer', 'source_file_comments', true);
+	}
+
 	public function testKnockoutForm() {
 		$page = $this->get('KnockoutFormTest_Controller');
 		$this->assertEquals(200, $page->getStatusCode(), "a page should load");
+		$body = $page->getBody();
+		//SS_Log::log(new Exception(print_r($body, true)), SS_Log::NOTICE);
+
+		$this->assertContains('data-bind="submit: addToCart"',$body,'form element has submit binding to javascript function');
+		$this->assertContains('<input data-bind="textInput: spaceship, hasFocus: true"', $body, 'Databind attribute in input element');
+		$this->assertContains("setKnockout:{value:'Enterprise\'s Voyage'}", $body, 'Comma escaped in HTML for javascript');
+		$this->assertContains('<select data-bind="value: menu"', $body, 'Databind attribute applied to select element');
+		$this->assertContains('<input data-bind="textInput: seatNumber, setKnockout:{value:4}"', $body, 'KnockoutNumericField works');
 		
-		$this->assertContains('<input data-bind="textInput: spaceship, hasFocus: true"', $page->getBody(), 'Databind attribute in input element');
-		$this->assertContains("setKnockout:{value:'Enterprise\'s Voyage'}", $page->getBody(), 'Comma escaped in HTML for javascript');
-		$this->assertContains('<select data-bind="value: menu"', $page->getBody(), 'Databind attribute applied to select element');
-		$this->assertContains('<input data-bind="textInput: seatNumber, setKnockout:{value:4}"', $page->getBody(), 'KnockoutNumericField works');
-		
-		$this->assertContains('<input data-bind="enable: canSaveInterGalacticAction, css:{ \'FormAction_Disabled\': !canSaveInterGalacticAction() }" type="submit"', $page->getBody(), 'Databind attribute in submit button');
+		$this->assertContains('<input data-bind="enable: canSaveInterGalacticAction, css:{ \'FormAction_Disabled\': !canSaveInterGalacticAction() }" type="submit"', $body, 'Databind attribute in submit button');
 
-		$this->assertContains('<input data-bind="textInput: email, setKnockout:{value:\'steven@sanderson.com\'}"', $page->getBody(), 'Databind attribute applied to input element for email field');
-		$this->assertContains('class="email text"', $page->getBody(), 'KnockoutEmailField has a class of "email text"');
+		$this->assertContains('<input data-bind="textInput: email, setKnockout:{value:\'steven@sanderson.com\'}"', $body, 'Databind attribute applied to input element for email field');
+		$this->assertContains('class="email text"', $body, 'KnockoutEmailField has a class of "email text"');
 
-		$this->assertContains('<textarea data-bind="textInput: comments"', $page->getBody(), 'Databind attribute applied to the textareafield');
-		$this->assertContains('class="knockouttextarea textarea"', $page->getBody(), 'KnockoutTextareaField has a class of "textarea text"');
+		$this->assertContains('<textarea data-bind="textInput: comments"', $body, 'Databind attribute applied to the textareafield');
+		$this->assertContains('class="knockouttextarea textarea"', $body, 'KnockoutTextareaField has a class of "textarea text"');
 
-		$this->assertContains('data-bind="checked: accessories, setKnockout:{value:\'Zero Gravity Pillow\'}, blah: console.log(\'blast-off\')"', $page->getBody(), 'Databind attribute applied to the radio buttons');
-		$this->assertContains('class="radio"', $page->getBody(), 'KnockoutOptionsetField has a class of "radio"');
+		$this->assertContains('data-bind="checked: accessories, setKnockout:{value:\'Zero Gravity Pillow\'}, blah: console.log(\'blast-off\')"', $body, 'Databind attribute applied to the radio buttons');
+		$this->assertContains('class="radio"', $body, 'KnockoutOptionsetField has a class of "radio"');
+		$this->assertContains('data-bind="enable: canSaveInterGalacticAction', $body, 'KnockoutFormAction has an obserable of "canSaveInterGalacticAction"');
+
+
 
 	}
 }
@@ -49,7 +60,7 @@ class KnockoutFormTest_Controller extends Controller implements TestOnly {
 	}
 	
 	public function Form() {
-		$form = Form::create(
+		$form = KnockoutForm::create(
 			$this,
 			'Form',
 			FieldList::create(
@@ -82,9 +93,8 @@ class KnockoutFormTest_Controller extends Controller implements TestOnly {
 					->setObservable('canSaveInterGalacticAction')
 			)
 		);
+		$form->setSubmit('addToCart');  // using KnockoutForm
 
-		$form->disableSecurityToken(); // Disable CSRF protection for easier form submission handling
-		
 		return $form;
 	}
 	
