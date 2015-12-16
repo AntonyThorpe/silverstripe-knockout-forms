@@ -24,7 +24,7 @@ class KnockoutFormAction extends FormAction {
 	/**
 	 * casting of variables for security purposes
 	 *
-	 * Reference: http://docs.silverstripe.org/en/3.1/developer_guides/security/secure_coding/
+	 * @see http://docs.silverstripe.org/en/3.1/developer_guides/security/secure_coding/
 	 */
 	protected $casting = array(
         "DisabledClass" => "Varchar",
@@ -37,6 +37,7 @@ class KnockoutFormAction extends FormAction {
 	/**
 	 * setDisabledClass
 	 *
+	 * @param string $input The CSS class appied to the element upon a falsy observable result
 	 * @return $this
 	 */
 	public function setDisabledClass($input) {

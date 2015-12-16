@@ -25,7 +25,7 @@ class KnockoutOptionsetField extends OptionsetField {
 	/**
 	 * casting of variables for security purposes
 	 *
-	 * Reference: http://docs.silverstripe.org/en/3.1/developer_guides/security/secure_coding/
+	 * @see http://docs.silverstripe.org/en/3.1/developer_guides/security/secure_coding/
 	 */
 	protected $casting = array(
         "Observable" => "Varchar",
@@ -35,6 +35,8 @@ class KnockoutOptionsetField extends OptionsetField {
     );
 	
 	/**
+	 * Constructor
+	 * 
 	 * @param string $name The field name
 	 * @param string $title The field title
 	 * @param array $source An map of the dropdown items

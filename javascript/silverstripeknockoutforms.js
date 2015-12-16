@@ -17,12 +17,10 @@
 	/**
 	 * setKnockout Binding Handler
 	 *
-	 * for passing PHP variables and the observable to Knockout 
-	 *
-	 * @valueAccessor object 	the value key passes a PHP variable into a Knockout observable  
-	 *  						the observable key passes in the observable to be accessed directly
-	 *  						Note: the observable setting only needs to be supplied 
-	 *  						when using Custom Bindings.
+	 * For passing PHP variables and the observable to Knockout 
+	 * @param HTML element The element the binding handler is attached to
+	 * @param function valueAccessor The value, wrapped in a function, passed from the PHP function into the Knockout observable.
+	 * @param function allBindings Other binding handlers on the element
 	 * @example {value:'The Enterprise', observable:'spaceship'}
 	 */
 	ko.bindingHandlers.setKnockout = {

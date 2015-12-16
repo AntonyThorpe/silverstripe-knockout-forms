@@ -3,7 +3,6 @@
  * KnockoutFormTest
  *
  * Controller tests
- * 
  * @package framework
  * @subpackage tests
  */

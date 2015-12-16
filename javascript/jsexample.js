@@ -75,7 +75,7 @@
 
 
 
-	ko.validation.registerExtenders();
+	ko.validation.registerExtenders(); // for Knockout Validation 
 	ko.applyBindings(new viewModel(), document.getElementById("body"));
 
 })(ko);

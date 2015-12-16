@@ -5,7 +5,7 @@ require_once('Common.php');
 /**
  * KnockoutDropdownField
  * 
- * Creates a {@link DropdownField} with an additional data-bind attribute that 
+ * Creates a dropdown field with an additional data-bind attribute that 
  * links to a Knockout obervable
  *
  * @package Silverstripe Knockout Forms
@@ -25,7 +25,7 @@ class KnockoutDropdownField extends DropdownField {
 	/**
 	 * casting of variables for security purposes
 	 *
-	 * Reference: http://docs.silverstripe.org/en/3.1/developer_guides/security/secure_coding/
+	 * @see http://docs.silverstripe.org/en/3.1/developer_guides/security/secure_coding/
 	 */
 	protected $casting = array(
         "Observable" => "Varchar",
@@ -35,6 +35,8 @@ class KnockoutDropdownField extends DropdownField {
     );
 	
 	/**
+	 * Constructor
+	 * 
 	 * @param string $name The field name
 	 * @param string $title The field title
 	 * @param array $source An map of the dropdown items

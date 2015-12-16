@@ -1,6 +1,10 @@
 # silverstripe-knockout-forms
 Provides an enhanced UX with Silverstripe forms using Knockout MVVM JavaScript library plus an associated validation plugin
 
+[![Build Status](https://travis-ci.org/AntonyThorpe/silverstripe-knockout-forms.svg?branch=master)](http://travis-ci.org/antonythorpe/silverstripe-knockout-forms)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/AntonyThorpe/silverstripe-knockout-forms/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/AntonyThorpe/silverstripe-knockout-forms/?branch=master)
+[![Build Status](https://scrutinizer-ci.com/g/AntonyThorpe/silverstripe-knockout-forms/badges/build.png?b=master)](https://scrutinizer-ci.com/g/AntonyThorpe/silverstripe-knockout-forms/build-status/master)
+
 ## Why use this Silverstripe module?
 * Prevent incorrect form submission
 * Live validation responses
@@ -151,7 +155,7 @@ $actions = new FieldList(
 The button has the disabled attribute when its observable returns false.  In addition, this field has the method of `setDisabledClass` to dynamically add a class to the input/select element when invalid.  The default class is `FormAction_Disabled`. 
 
 ### Knockout Form
-To capture form submission via enter & click, add a submit binding handler to the form.  This can be pretty nifty for making Ajax calls.
+To capture form submission in a javascript function following enter/click, add a submit binding handler to the form.  This can be pretty nifty for arranging ajax calls.  In the below example `addToCart` is the javascript function that is called upon form submission.
 ```php
 $form = KnockoutForm::create(
     $this,
@@ -159,14 +163,23 @@ $form = KnockoutForm::create(
     FieldList::create( ...
 $form->setSubmit('addToCart');
 ```
-In the above example the 'addToCart' is the javascript function that is called upon form submission.
+This produces HTML:
 ```html
 <form data-bind="submit: addToCart" ...>
 ```
-This provides the form element to the javascript function.
+The form element is provided to the javascript function.
 ```javascript
 this.addToCart = function(formElement){
-  
+  $.ajax({
+    url: $(formElement).attr('action'),
+    type: $(formElement).attr('method'),
+    data: {
+      // various
+      SecurityID: $(ko.utils.getFormFields(formElement, 'SecurityID')).val()
+    }
+  }).done(function(data) {
+    console.log(data);
+  });  
 }
 ```
 
@@ -210,12 +223,20 @@ this.flightMenu.subscribe(function(value) {
 ## Form Fields from other Silverstripe Modules
 Replace fields in another Silverstripe Module through [extension points](http://docs.silverstripe.org/en/3.1/developer_guides/extending/extensions/) with Knockout ones.  For example use the replaceField method:
 ```php
-function updateForm(&$fields){
+function updateForm(&$form){
+  $fields = $form->Fields();
+  
+  // form field
   $fields->replaceField('FirstName', KnockoutTextField::create('FirstName', 'FirstName')
     ->setObservable('firstName')
     ->setHasFocus(true)
     ->setValue($fields->fieldByName('FirstName')->Value())
   );
+
+  // action field
+  $form->actions->replaceField('action_addtocart', KnockoutFormAction::create('addtocart', 'Add to Cart')
+    ->setObservable('numeric')
+  );  // note that the replaced field name is prefixed with 'action_'.  Remove this when creating the new KnockoutFormAction.
 }
 ```
 

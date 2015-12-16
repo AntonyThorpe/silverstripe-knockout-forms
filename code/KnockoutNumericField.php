@@ -26,7 +26,7 @@ class KnockoutNumericField extends NumericField {
 	/**
 	 * casting of variables for security purposes
 	 *
-	 * Reference: http://docs.silverstripe.org/en/3.1/developer_guides/security/secure_coding/
+	 * @see http://docs.silverstripe.org/en/3.1/developer_guides/security/secure_coding/
 	 */
 	protected $casting = array(
         "Observable" => "Varchar",

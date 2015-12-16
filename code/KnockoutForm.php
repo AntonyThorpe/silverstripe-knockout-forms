@@ -19,7 +19,7 @@ class KnockoutForm extends Form {
 	/**
 	 * casting of variables for security purposes
 	 *
-	 * Reference: http://docs.silverstripe.org/en/3.1/developer_guides/security/secure_coding/
+	 * @see http://docs.silverstripe.org/en/3.1/developer_guides/security/secure_coding/
 	 */
 	protected $casting = array(
         "Submit" => "Varchar"
@@ -28,6 +28,7 @@ class KnockoutForm extends Form {
 	/**
 	 * setSubmit
 	 *
+	 * @param string $input The javascript function called upon form submit
 	 * @return $this
 	 */
 	public function setSubmit($input) {

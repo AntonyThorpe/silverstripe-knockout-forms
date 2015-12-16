@@ -27,7 +27,7 @@ class KnockoutTextareaField extends TextareaField {
 	/**
 	 * casting of variables for security purposes
 	 *
-	 * Reference: http://docs.silverstripe.org/en/3.1/developer_guides/security/secure_coding/
+	 * @see http://docs.silverstripe.org/en/3.1/developer_guides/security/secure_coding/
 	 */
 	protected $casting = array(
         "Observable" => "Varchar",
@@ -37,7 +37,7 @@ class KnockoutTextareaField extends TextareaField {
     );
 
     /**
-	 * Creates a new field
+	 * Constructor
 	 *
 	 * @param string $name The internal field name, passed to forms.
 	 * @param string $title The human-readable field label.

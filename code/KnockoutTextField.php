@@ -26,7 +26,7 @@ class KnockoutTextField extends TextField {
 	/**
 	 * casting of variables for security purposes
 	 *
-	 * Reference: http://docs.silverstripe.org/en/3.1/developer_guides/security/secure_coding/
+	 * @see http://docs.silverstripe.org/en/3.1/developer_guides/security/secure_coding/
 	 */
 	protected $casting = array(
         "Observable" => "Varchar",
@@ -36,9 +36,7 @@ class KnockoutTextField extends TextField {
     );
 
 	/**
-	 * Returns an input field
-	 *
-	 * Set the class of 'text' to match TextField
+	 * Constructor
 	 *
 	 * @param string $name
 	 * @param null|string $title

@@ -6,21 +6,21 @@ trait Common {
 	/**
 	 * $observable
 	 *
-	 * @var string a Knockout observable
+	 * @var string A Knockout observable
 	 */
 	protected $observable;
 
 	/**
 	 * $otherBindings
 	 *
-	 * @var string for additional items in the data-bind attribute
+	 * @var string For additional items in the data-bind attribute
 	 */
 	protected $otherBindings;
 
 	/**
-	 * $focus
+	 * $hasFocus
 	 *
-	 * @var boolean for applying focus to a field
+	 * @var boolean For applying focus to a field
 	 */
 	protected $hasFocus = false;
 
@@ -38,7 +38,7 @@ trait Common {
 	/**
 	 * getObservable
 	 *
-	 * @return string
+	 * @return string The observable used with the binding handler
 	 */
 	public function getObservable() {
 		return $this->observable;
@@ -58,7 +58,7 @@ trait Common {
 	/**
 	 * getBindingType
 	 *
-	 * @return string
+	 * @return string Provide the Knockoutjs binding type used on the element
 	 */
 	public function getBindingType() {
 		return $this->bindingType;
@@ -68,7 +68,7 @@ trait Common {
 	/**
 	 * getOtherBindings
 	 *
-	 * @return string
+	 * @return string The other bindings used on the element
 	 */
 	public function getOtherBindings() {
 		return $this->otherBindings;
@@ -88,6 +88,7 @@ trait Common {
 	/**
 	 * setHasFocus
 	 *
+	 * @param boolean $input set the element to a focus state upon page load
 	 * @return $this
 	 */
 	public function setHasFocus($input) {
