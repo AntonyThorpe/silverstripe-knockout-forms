@@ -9,7 +9,7 @@
 		"silverstripe/framework": ">=3.1"
 	},
 	"extra": {
-		"installer-name": "module_knockoutforms"
+		"installer-name": "module_silverstripeknockoutforms"
 	},
 	"support": {
 		"issues": "https://github.com/antonythorpe/silverstripe-knockout-forms/issues",
