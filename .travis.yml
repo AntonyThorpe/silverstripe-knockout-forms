@@ -1,25 +1,26 @@
-language: php 
-php: 
- - 5.4
+# See https://github.com/silverstripe-labs/silverstripe-travis-support for setup details
+# used Silverstripe Translatable as a guide
+# https://github.com/thephpleague/skeleton/blob/master/.travis.yml
+
+language: php
+php:
+ - 5.6
+
+sudo: false
 
 env:
-  matrix:
-   - DB=MYSQL CORE_RELEASE=3.0
-   - DB=MYSQL CORE_RELEASE=3.1
-   - DB=MYSQL CORE_RELEASE=master
-   - DB=PGSQL CORE_RELEASE=master
+ - DB=MYSQL CORE_RELEASE=3.3 PDO=1
 
 matrix:
   include:
-    - php: 5.5
-      env: DB=MYSQL CORE_RELEASE=master
+   - php: 5.5
+     env: DB=PGSQL CORE_RELEASE=3.2
 
 before_script:
  - phpenv rehash
- - composer self-update
  - git clone git://github.com/silverstripe-labs/silverstripe-travis-support.git ~/travis-support
  - php ~/travis-support/travis_setup.php --source `pwd` --target ~/builds/ss
  - cd ~/builds/ss
 
-script: 
+script:
  - vendor/bin/phpunit module_silverstripeknockoutforms/tests/
