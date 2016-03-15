@@ -1,11 +1,4 @@
-assets/*
-_ss_environment.php
-tools/phing-metadata
-silverstripe-cache
-.buildpath
-.project
-.settings
-.idea
-.DS_Store
 *.sublime*
-vendor/
+.settings
+.DS_Store
+

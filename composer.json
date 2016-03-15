@@ -10,17 +10,17 @@
 	},
 	"require-dev": {
 		"phpunit/PHPUnit": "3.7.*@stable"
-    },
+	},
 	"extra": {
 		"installer-name": "module_silverstripeknockoutforms",
-        "branch-alias"  : {
-            "dev-master": "1.*-dev"
-    }
+		"branch-alias": {
+			"dev-master": "1.*-dev"
+		}
 	},
 	"support": {
 		"issues": "https://github.com/antonythorpe/silverstripe-knockout-forms/issues",
 		"source": "https://github.com/antonythorpe/silverstripe-knockout-forms/"
 	},
-    "minimum-stability": "stable",
-    "license": "MIT"
+	"minimum-stability": "stable",
+	"license": "MIT"
 }

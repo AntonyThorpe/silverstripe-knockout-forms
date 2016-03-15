@@ -34,7 +34,7 @@
 				observable = unwrapValueAccessor.observable;
 			} else {
 				// obtain the observable key from the allBindings Accessor
-				var key = ko.utils.arrayFirst(["textInput", "value", "click", "event", "submit", "enable", "disable", "checked", "options", "selectedOptions"], function(item) {
+				var key = ko.utils.arrayFirst(["visible", "text", "html", "css", "style", "attr", "if", "ifnot", "with", "component", "click", "event", "submit", "enable", "disable", "value", "textInput", "hasFocus", "checked", "options", "selectedOptions"], function(item) {
 					return allBindings.has(item);
 				});
 				observable = allBindings.get(key);
