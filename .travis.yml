@@ -23,4 +23,4 @@ before_script:
  - cd ~/builds/ss
 
 script:
- - vendor/bin/phpunit module_silverstripeknockoutforms/tests/
+ - vendor/bin/phpunit knockoutforms/tests/

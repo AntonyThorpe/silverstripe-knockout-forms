@@ -22,3 +22,20 @@ tools:
         too_many_fields:      true
         too_many_methods:     true
         excessive_class_complexity:  true
+  php_code_sniffer:
+    config:
+      standard: "PSR2"
+  php_cs_fixer:
+    config:
+      level: "PSR2"
+
+checks:
+  php:
+    code_rating: true
+    duplication: true
+
+filter:
+  paths: [code/*, tests/*]
+
+
+

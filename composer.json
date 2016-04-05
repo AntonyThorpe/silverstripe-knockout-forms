@@ -1,25 +1,20 @@
 {
-	"name": "AntonyThorpe/silverstripe-knockout-forms",
-	"description": "Provides an enhanced UX for Silverstripe forms using Knockout MVVM JavaScript library plus an associated validation plugin.  Silverstripe creates a form, specifying the Knockout styled ones, and validation needs are added to observables via a Knockout extension.  Default messages are available or can be customised.  The form will only submit once all front-end validation rules are satisfied.",
-	"license": "MIT",
+	"name": "antonythorpe/silverstripe-knockout-forms",
+	"description": "Provides an enhanced UX for Silverstripe forms using the Knockout MVVM JavaScript library plus an associated validation plugin.  Silverstripe creates a form, specifying the Knockout styled ones, and validation needs are added to observables via a Knockout extension.  Default messages are available or can be customised.  The submit button will only be enabled upon satisfaction of all the validation rules.",
 	"type": "silverstripe-module",
-	"keywords": ["silverstripe", "forms", "form validation", "Knockoutjs", "Knockout-Validation"],
+	"keywords": ["Silverstripe", "forms", "form validation", "Knockout", "Knockoutjs", "Knockout-Validation"],
 	"require": {
-		"php": ">=5.4.0",
-		"silverstripe/framework": ">=3.1"
+		"php": "^5.4",
+		"silverstripe/framework": "^3.1"
 	},
 	"require-dev": {
 		"phpunit/PHPUnit": "3.7.*@stable"
 	},
 	"extra": {
-		"installer-name": "module_silverstripeknockoutforms",
+		"installer-name": "knockoutforms",
 		"branch-alias": {
 			"dev-master": "1.*-dev"
 		}
-	},
-	"support": {
-		"issues": "https://github.com/antonythorpe/silverstripe-knockout-forms/issues",
-		"source": "https://github.com/antonythorpe/silverstripe-knockout-forms/"
 	},
 	"minimum-stability": "stable",
 	"license": "MIT"
