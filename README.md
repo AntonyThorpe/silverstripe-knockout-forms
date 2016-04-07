@@ -3,7 +3,10 @@ Provides an enhanced UX with Silverstripe forms using the Knockout MVVM JavaScri
 
 [![Build Status](https://travis-ci.org/AntonyThorpe/silverstripe-knockout-forms.svg?branch=master)](https://travis-ci.org/AntonyThorpe/silverstripe-knockout-forms)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/AntonyThorpe/silverstripe-knockout-forms/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/AntonyThorpe/silverstripe-knockout-forms/?branch=master)
-[![Build Status](https://scrutinizer-ci.com/g/AntonyThorpe/silverstripe-knockout-forms/badges/build.png?b=master)](https://scrutinizer-ci.com/g/AntonyThorpe/silverstripe-knockout-forms/build-status/master)
+[![Latest Stable Version](https://poser.pugx.org/antonythorpe/silverstripe-knockout-forms/v/stable)](https://packagist.org/packages/antonythorpe/silverstripe-knockout-forms)
+[![Total Downloads](https://poser.pugx.org/antonythorpe/silverstripe-knockout-forms/downloads)](https://packagist.org/packages/antonythorpe/silverstripe-knockout-forms)
+[![Latest Unstable Version](https://poser.pugx.org/antonythorpe/silverstripe-knockout-forms/v/unstable)](https://packagist.org/packages/antonythorpe/silverstripe-knockout-forms)
+[![License](https://poser.pugx.org/antonythorpe/silverstripe-knockout-forms/license)](https://packagist.org/packages/antonythorpe/silverstripe-knockout-forms)
 
 ## Why use this Silverstripe module?
 * Prevent incorrect form submission
@@ -90,6 +93,6 @@ None sorry.
 Pull requests welcome!  PSR-2 plus test updates please.
 
 ## License
-[MIT](/LICENCE.md)
+[MIT](LICENCE.md)
 
 
