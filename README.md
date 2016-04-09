@@ -1,5 +1,5 @@
 # silverstripe-knockout-forms
-Provides an enhanced UX with Silverstripe forms using the Knockout MVVM JavaScript library plus an associated validation plugin
+Provides an enhanced UX using the Knockout MVVM JavaScript library, plus an associated validation plugin, with Silverstripe forms
 
 [![Build Status](https://travis-ci.org/AntonyThorpe/silverstripe-knockout-forms.svg?branch=master)](https://travis-ci.org/AntonyThorpe/silverstripe-knockout-forms)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/AntonyThorpe/silverstripe-knockout-forms/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/AntonyThorpe/silverstripe-knockout-forms/?branch=master)
@@ -14,7 +14,6 @@ Provides an enhanced UX with Silverstripe forms using the Knockout MVVM JavaScri
 * Dynamic if needed
 * Present messages via span element or tooltip
 * Browser support back to ie6
-* Compatible with the CMS
 
 ## How it works 
 Add validation needs to the observables in a Knockoutjs viewModel.  Next, utilising the Knockout Form Fields, use Silverstripe to create the form.  Upon bind, the field values are passed into the observables via a custom binding handler.  The rules placed upon the observable will control the field validation.
@@ -36,6 +35,7 @@ Add validation needs to the observables in a Knockoutjs viewModel.  Next, utilis
 - Add additional fields e.g. checkbox field, etc.
 - Explore the use of [knockout-pre-render](https://github.com/ErikSchierboom/knockout-pre-rendered) for the display of data in a grid (would replace the setKnockout binding handler and restructure the templates/tests).  This library is currently only one dimensional.
 - Can Knockout's components be used to validate forms without the need to set observables and maintain a site-wide viewModel?  Maybe KnockoutFormAction (or the Form) could contain the parent componet and supply observables to the form fields.
+- Use in the CMS
 
 ## Pull Requests are Welcome
 The recommended approach is to extend an existing Silverstripe field.  Ensure that the appropriate Binding Type is specified (see knockoutjs.com for the binding type needed) and cast getters from `Common.php` and any new get methods you create.  
@@ -93,6 +93,6 @@ None sorry.
 Pull requests welcome!  PSR-2 plus test updates please.
 
 ## License
-[MIT](LICENCE.md)
+[MIT](LICENCE)
 
 
