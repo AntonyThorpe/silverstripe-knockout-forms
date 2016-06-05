@@ -1,5 +1,6 @@
 # Change Log of Silverstripe Knockout Forms
 
+* 1.2.3 Updated classes for PSR-2
 * 1.2.2 Updated module documentation as per Silverstripe's recommendation
 * 1.2.1 Updated Installation Folder Name
 * 1.2.0 Knockout Form

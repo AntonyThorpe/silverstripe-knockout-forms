@@ -9,7 +9,7 @@ In a terminal
 Load the following javascript libraries in the following order: 
 * [`Knockoutjs`](http://knockoutjs.com/downloads/index.html)
 * [`Knockout-Validation`](https://github.com/Knockout-Contrib/Knockout-Validation)
-* Next load the custom binding handler `knockoutforms/javascript/silverstripeknockoutforms.js`
+* Next load the custom binding handler `knockoutforms/javascript/knockoutforms.js`
 * your file with a Knockout ViewModel (similar to `/knockoutforms/javascript/jsexample.js`)
 
 ### Global Knockout Validation Settings
