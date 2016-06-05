@@ -1,5 +1,5 @@
 # silverstripe-knockout-forms
-Provides an enhanced UX using the Knockout MVVM JavaScript library, plus an associated validation plugin, with Silverstripe forms
+Provides an enhanced UX for Silverstripe forms using the Knockout MVVM JavaScript library plus an associated validation plugin
 
 [![Build Status](https://travis-ci.org/AntonyThorpe/silverstripe-knockout-forms.svg?branch=master)](https://travis-ci.org/AntonyThorpe/silverstripe-knockout-forms)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/AntonyThorpe/silverstripe-knockout-forms/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/AntonyThorpe/silverstripe-knockout-forms/?branch=master)
