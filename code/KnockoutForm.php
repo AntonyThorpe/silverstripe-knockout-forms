@@ -5,7 +5,6 @@
  *
  * Adds a submit binding handlier to the form element to capture click/enter events
  * Delivers the form element to the javascript function
- * @package Silverstripe Knockout Forms
  */
 class KnockoutForm extends Form
 {

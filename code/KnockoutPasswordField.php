@@ -1,24 +1,23 @@
 <?php
 require_once('Common.php');
-    
-/**
- * KnockoutEmailField
- *
- * Creates a {@link EmailField} with an additional data-bind attribute that links to a Knockout obervable
- */
-class KnockoutEmailField extends EmailField
-{
 
+/**
+ * KnockoutPasswordField
+ *
+ * Creates a {@link PasswordField} with an additional data-bind attribute that links to a Knockout obervable
+ * @uses 'password' as the default observable
+ */
+class KnockoutPasswordField extends PasswordField
+{
     use \Knockout\Common;
 
     /**
      * bindingType
      *
-     * KnockoutEmailField needs either 'value' or 'textInput' as a key for the 'data-bind' HTML attribute.
-     * Default to textInput for live updates
+     * KnockoutPasswordField needs either 'value' or 'textInput' as a key for the 'data-bind' HTML attribute
      *
      * @var string data-bind attribute key
-     * @example  data-bind="textInput: email" - the binding type is: textInput.
+     * @example  data-bind="input: name, valueUpdate: 'input'" - the binding type is: input.
      */
     protected $bindingType = "textInput";
 
@@ -40,12 +39,13 @@ class KnockoutEmailField extends EmailField
      * @param string $name
      * @param null|string $title
      * @param string $value
-     * @param null|int $maxLength
-     * @param null|Form $form
      */
-    public function __construct($name, $title = null, $value = '', $maxLength = null, $form = null)
+    public function __construct($name, $title = null, $value = '')
     {
-        parent::__construct($name, $title, $value, $maxLength, $form);
+        parent::__construct($name, $title, $value);
+        $this->addExtraClass('password');
         $this->setTemplate('KnockoutTextField');
+        $this->observable = 'password';
+        $this->setAttribute('spellcheck', false);
     }
 }

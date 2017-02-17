@@ -5,8 +5,6 @@ require_once('Common.php');
  * KnockoutFormAction
  *
  * Wrap HTML in an Knockout if statement to disable the submit key when invalid (as per Knockout Validation)
- * @package Silverstripe Knockout Forms
- * @subpackage actions
  */
 class KnockoutFormAction extends FormAction
 {

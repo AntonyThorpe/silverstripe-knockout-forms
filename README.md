@@ -3,6 +3,7 @@ Provides an enhanced UX for Silverstripe forms using the Knockout MVVM JavaScrip
 
 [![Build Status](https://travis-ci.org/AntonyThorpe/silverstripe-knockout-forms.svg?branch=master)](https://travis-ci.org/AntonyThorpe/silverstripe-knockout-forms)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/AntonyThorpe/silverstripe-knockout-forms/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/AntonyThorpe/silverstripe-knockout-forms/?branch=master)
+[![helpfulrobot](https://helpfulrobot.io/antonythorpe/silverstripe-knockout-forms/badge)](http://addons.silverstripe.org/add-ons/antonythorpe/silverstripe-knockout-forms)
 [![Latest Stable Version](https://poser.pugx.org/antonythorpe/silverstripe-knockout-forms/v/stable)](https://packagist.org/packages/antonythorpe/silverstripe-knockout-forms)
 [![Total Downloads](https://poser.pugx.org/antonythorpe/silverstripe-knockout-forms/downloads)](https://packagist.org/packages/antonythorpe/silverstripe-knockout-forms)
 [![Latest Unstable Version](https://poser.pugx.org/antonythorpe/silverstripe-knockout-forms/v/unstable)](https://packagist.org/packages/antonythorpe/silverstripe-knockout-forms)
@@ -19,7 +20,7 @@ Provides an enhanced UX for Silverstripe forms using the Knockout MVVM JavaScrip
 Add validation needs to the observables in a Knockoutjs viewModel.  Next, utilising the Knockout Form Fields, use Silverstripe to create the form.  Upon bind, the field values are passed into the observables via a custom binding handler.  The rules placed upon the observable will control the field validation.
 
 ## The Approach of this Module
-- Extend Silverstripe form fields just enough to place a Knockout observable and value on the element
+- Extend Silverstripe form fields just enough to place a Knockout observable and the value on the element
 - Use Knockout-Validation to validate the fields
 - Disable the submit button until all rules are satisfied
 
@@ -89,10 +90,13 @@ Adapt the Frameworks form templates to incorporate Knockout's binding handlers a
 ## Support
 None sorry.
 
+## Change Log
+[Link](changelog.md)
+
 ## Contributions
-Pull requests welcome!  PSR-2 plus test updates please.
+[Link](contributing.md)
 
 ## License
-[MIT](LICENCE)
+[MIT](LICENSE)
 
 

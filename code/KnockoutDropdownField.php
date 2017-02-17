@@ -6,8 +6,6 @@ require_once('Common.php');
  *
  * Creates a dropdown field with an additional data-bind attribute that
  * links to a Knockout obervable
- *
- * @package Silverstripe Knockout Forms
  */
 class KnockoutDropdownField extends DropdownField
 {

@@ -5,7 +5,6 @@ require_once('Common.php');
  * KnockoutNumericField
  *
  * Creates a {@link NumericField} with an additional data-bind attribute that links to a Knockout obervable
- * @package Silverstripe Knockout Forms
  */
 class KnockoutNumericField extends NumericField
 {

@@ -5,7 +5,6 @@ require_once('Common.php');
  * KnockoutTextareaField
  *
  * Creates a {@link TextareaField} with an additional data-bind attribute that links to a Knockout obervable
- * @package Silverstripe Knockout Forms
  */
 class KnockoutTextareaField extends TextareaField
 {

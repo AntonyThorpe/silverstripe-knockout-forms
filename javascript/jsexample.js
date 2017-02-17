@@ -33,6 +33,8 @@
 	 */
 	function viewModel() {
 
+		var self = this;
+
 		this.spaceship = ko.observable().extend({
 			required: true,
 			maxLength: 100
@@ -61,16 +63,26 @@
 			required: true
 		});
 
+		self.password = ko.observable().extend({
+			required: true
+		});
+
+		self.confirmedPassword = ko.observable().extend({
+			required: true,
+			areSame: {
+				params: self.password.bind(self),
+				message: "Passwords must match"
+			}
+		});
+
 		this.canSave = ko.pureComputed(function() {
-			return this.spaceship.isValid() && this.flightMenu.isValid() && this.seatNumber.isValid() && this.email.isValid() && comments.isValid();
+			return this.spaceship.isValid() && this.flightMenu.isValid() && this.seatNumber.isValid() && this.email.isValid() && this.comments.isValid() && this.accessories.isValid() && self.password.isValid() && self.confirmedPassword.isValid();
 		}, this);
 
 
-		this.accessories.subscribe(function(value) {
+		self.password.subscribe(function(value) {
 			console.log(value);
 		});
-
-
 	}
 
 
