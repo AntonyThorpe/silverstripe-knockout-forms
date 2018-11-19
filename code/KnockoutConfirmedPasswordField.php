@@ -75,6 +75,8 @@ class KnockoutConfirmedPasswordField extends ConfirmedPasswordField
             }
         }
 
+        $this->setFieldHolderTemplate('KnockoutFormField_holder');
+
         Requirements::block(FRAMEWORK_DIR . '/thirdparty/jquery/jquery.js');
         Requirements::block(FRAMEWORK_DIR . '/javascript/ConfirmedPasswordField.js');
         Requirements::block(FRAMEWORK_DIR . '/css/ConfirmedPasswordField.css');

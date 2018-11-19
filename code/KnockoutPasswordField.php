@@ -46,6 +46,6 @@ class KnockoutPasswordField extends PasswordField
         $this->addExtraClass('password');
         $this->setTemplate('KnockoutTextField');
         $this->observable = 'password';
-        $this->setAttribute('spellcheck', false);
+        $this->setAttribute('spellcheck', 'false');
     }
 }

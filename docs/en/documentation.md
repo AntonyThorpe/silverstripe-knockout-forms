@@ -210,7 +210,7 @@ function updateForm(&$form){
 
   // action field
   $form->actions->replaceField('action_addtocart', KnockoutFormAction::create('addtocart', 'Add to Cart')
-    ->setObservable('numeric')
+    ->setObservable('canSave')
   );  // note that the replaced field name is prefixed with 'action_'.  Remove this when creating the new KnockoutFormAction.
 }
 ```
