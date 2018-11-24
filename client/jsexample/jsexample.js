@@ -6,15 +6,14 @@
 	 *
 	 * global settings plus a custom rule that two fields (e.g. passwords) are the same
 	 */
-	// 
+	//
 	ko.validation.init({
 		insertMessages: true, // set to false for tooltip
 		messagesOnModified: true
 	});
 
-
 	/**
-	 * areSame 
+	 * areSame
 	 *
 	 * Knockout Validation custom rule.  Used to check that passwords match
 	 */
@@ -29,7 +28,7 @@
 	};
 
 	/**
-	 * ViewModel 
+	 * ViewModel
 	 */
 	function viewModel() {
 
@@ -79,15 +78,16 @@
 			return this.spaceship.isValid() && this.flightMenu.isValid() && this.seatNumber.isValid() && this.email.isValid() && this.comments.isValid() && this.accessories.isValid() && self.password.isValid() && self.confirmedPassword.isValid();
 		}, this);
 
-
 		self.password.subscribe(function(value) {
 			console.log(value);
 		});
+
+        self.addToCart = function(){
+            return null;
+        }
 	}
 
-
-
-	ko.validation.registerExtenders(); // for Knockout Validation 
+	ko.validation.registerExtenders(); // for Knockout Validation
 	ko.applyBindings(new viewModel(), document.getElementById("body"));
 
 })(ko);

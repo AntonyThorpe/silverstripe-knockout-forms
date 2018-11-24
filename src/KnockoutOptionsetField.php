@@ -1,5 +1,9 @@
 <?php
+
+namespace AntonyThorpe\Knockout;
+
 require_once('Common.php');
+use SilverStripe\Forms\OptionsetField;
 
 /**
  * KnockoutOptionsetField
@@ -9,7 +13,7 @@ require_once('Common.php');
  */
 class KnockoutOptionsetField extends OptionsetField
 {
-    use \Knockout\Common;
+    use \AntonyThorpe\Knockout\Common;
 
     /**
      * bindingType
@@ -30,19 +34,18 @@ class KnockoutOptionsetField extends OptionsetField
         "OtherBindings" => "Varchar",
         "HasFocus" => "Boolean"
     );
-    
+
     /**
      * Constructor
      *
      * @param string $name The field name
      * @param string $title The field title
      * @param array $source An map of the dropdown items
-     * @param string $value The current value
-     * @param Form $form The parent form
+     * @param mixed $value The current value
      */
-    public function __construct($name, $title = null, $source = array(), $value = '', $form = null)
+    public function __construct($name, $title = null, $source = array(), $value = '')
     {
-        parent::__construct($name, $title, $source, $value, $form);
+        parent::__construct($name, $title, $source, $value);
         $this->addExtraClass('optionset');
     }
 }

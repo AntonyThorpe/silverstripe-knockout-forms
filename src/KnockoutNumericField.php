@@ -1,6 +1,10 @@
 <?php
+
+namespace AntonyThorpe\Knockout;
+
 require_once('Common.php');
-    
+use SilverStripe\Forms\NumericField;
+
 /**
  * KnockoutNumericField
  *
@@ -8,7 +12,7 @@ require_once('Common.php');
  */
 class KnockoutNumericField extends NumericField
 {
-    use \Knockout\Common;
+    use \AntonyThorpe\Knockout\Common;
 
     /**
      * bindingType

@@ -1,18 +1,19 @@
 <?php
+namespace AntonyThorpe\Knockout;
+
 require_once('Common.php');
 require_once('CommonComposite.php');
+use SilverStripe\Forms\ConfirmedPasswordField;
 
 /**
- * KnockoutConfirmedPasswordField
- *
  * Creates a {@link ConfirmedPasswordField} with an additional data-bind attribute that links to a Knockout obervable
  * @uses 'confirmedPassword' as the default observable
  */
 class KnockoutConfirmedPasswordField extends ConfirmedPasswordField
 {
-    use \Knockout\Common;
-    use \Knockout\CommonComposite;
-    
+    use \AntonyThorpe\Knockout\Common;
+    use \AntonyThorpe\Knockout\CommonComposite;
+
     /**
      * bindingType
      *
@@ -43,43 +44,26 @@ class KnockoutConfirmedPasswordField extends ConfirmedPasswordField
      * @param null|string $title
      * @param string $value
      */
-    public function __construct($name, $title = null, $value = "", $form = null, $showOnClick = false,
-            $titleConfirmField = null)
+    public function __construct($name, $title = null, $value = "", $form = null, $showOnClick = false, $titleConfirmField = null)
     {
         parent::__construct($name, $title, $value, $form, $showOnClick, $titleConfirmField);
-        
-        // Variables
-        
-        $fields = $this->children;
-        $password_field = $fields->fieldByName('{$name}[_Password]');
-        $confirmed_password_field = $fields->fieldByName('{$name}[_ConfirmPassword]');
 
         // swap fields for the knockout ones
-        foreach($fields as $key=>$field) {
-            $name = $field->getName();
-            $title = $field->Title();
-            $value = $field->Value();
+        foreach ($this->children as $key => $field) {
             $knockout_field = KnockoutPasswordField::create(
-                $name,
-                $title,
-                $value
+                $field->getName(),
+                $field->Title(),
+                $field->Value()
             );
-
-            $fields->replaceField(
-                $name,
+            $this->children->replaceField(
+                $field->getName(),
                 $knockout_field
             );
-            
-            if($key == 1) {
+            if ($key == 1) {
                 $knockout_field->setObservable('confirmedPassword');
             }
         }
 
-        $this->setFieldHolderTemplate('KnockoutFormField_holder');
-
-        Requirements::block(FRAMEWORK_DIR . '/thirdparty/jquery/jquery.js');
-        Requirements::block(FRAMEWORK_DIR . '/javascript/ConfirmedPasswordField.js');
-        Requirements::block(FRAMEWORK_DIR . '/css/ConfirmedPasswordField.css');
+        $this->setFieldHolderTemplate('AntonyThorpe/Knockout/KnockoutFormField_holder');
     }
 }
-

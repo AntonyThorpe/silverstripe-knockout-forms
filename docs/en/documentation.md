@@ -39,28 +39,30 @@ self.password = ko.observable().extend({
 
 self.confirmedPassword = ko.observable().extend({
     required: true,
-    areSame: {    // Custom Validation rule: see jsexample.js
+    areSame: {    // Custom Validation rule: see `client/jsexample/jsexample.js`
         params: self.password.bind(self),
         message: "Passwords must match"
     }
 });
 ```
-Knockout-Validation has a number of built in [rules](https://github.com/Knockout-Contrib/Knockout-Validation/wiki/Native-Rules) or you can add some [custom ones](https://github.com/Knockout-Contrib/Knockout-Validation/wiki/User-Contributed-Rules) (e.g. the `areSame` rule in the `jsexample.js` file useful for password confirmation).
+Knockout-Validation has a number of built in [rules](https://github.com/Knockout-Contrib/Knockout-Validation/wiki/Native-Rules) or you can add some [custom ones](https://github.com/Knockout-Contrib/Knockout-Validation/wiki/User-Contributed-Rules) (e.g. the `areSame` rule in the `client/jsexample/jsexample.js` file useful for password confirmation).
 
 ## Knockout Form Fields
-Creating a `KnockoutTextField` is identical to that of `TextField`, and ditto with all the others. 
+Creating a `KnockoutTextField` is identical to that of `TextField`, and ditto with all the other field types.
 ```php
 $fields = new FieldList(
   KnockoutTextField::create('Spaceship', 'Spaceship', "The Enterprise")
     ->setObservable('spaceship')
     ->setHasFocus(true),
-  KnockoutDropdownField::create('FlightMenu', 'Takeoff Menu', array(
-    'Eatable Astroids' => 'Eatable Astroids',
-    'Crunchy Comets' => 'Crunchy Comets',
-    'Salty Satellites' => 'Salty Satellites'
-  ))
-    ->setEmptyString('Select...')
-    ->setObservable('flightMenu'),
+  KnockoutDropdownField::create(
+    'FlightMenu',
+    'Takeoff Menu',
+    array(
+        'Eatable Astroids' => 'Eatable Astroids',
+        'Crunchy Comets' => 'Crunchy Comets',
+        'Salty Satellites' => 'Salty Satellites'
+    ))->setEmptyString('Select...')
+        ->setObservable('flightMenu'),
   KnockoutNumericField::create('SeatNumber', 'Seat Number', 4)
     ->setObservable('seatNumber'),
   KnockoutEmailField::create('Email', 'Email')
@@ -68,15 +70,17 @@ $fields = new FieldList(
     ->setObservable('email'),
   KnockoutTextareaField::create('Comments', 'Comments')
     ->setObservable('comments'),
-  KnockoutOptionsetField::create('Accessories', 'Accessories', array(
-    'Flying High DVD' => 'Flying High DVD',
-    'Zero Gravity Pillow' => 'Zero Gravity Pillow',
-    'Rocket Replica' => 'Rocket Replica'
-  ))
-    ->setObservable('accessories')
-    ->setValue('Zero Gravity Pillow'),
+  KnockoutOptionsetField::create(
+    'Accessories',
+    'Accessories',
+    array(
+        'Flying High DVD' => 'Flying High DVD',
+        'Zero Gravity Pillow' => 'Zero Gravity Pillow',
+        'Rocket Replica' => 'Rocket Replica'
+    ))->setObservable('accessories')
+        ->setValue('Zero Gravity Pillow'),
     KnockoutConfirmedPasswordField::create('Password', 'Password')
-      //->setObservables(['userPassword', 'userConfirmedPassword']) for custom observable names (default is 'password' and 'confirmedPassword')
+      ->setObservables(['userPassword', 'userConfirmedPassword']) // for custom observable names (default is 'password' and 'confirmedPassword')
 );
 ```
 The above fields create the below HTML within the div.middleColumn.  Note the contents of the `data-bind` attribute.
@@ -124,7 +128,7 @@ $actions = new FieldList(
         ->setDisabledClass('has-warning')
 );
 ```
-The button has the disabled attribute when its observable returns false.  In addition, this field has the method of `setDisabledClass` to dynamically add a class to the input/select element when invalid.  The default class is `FormAction_Disabled`. 
+The button has the disabled attribute when its observable returns false.  In addition, this field has the method of `setDisabledClass` to dynamically add a class to the input/select element when invalid.  The default class is `FormAction_Disabled`.
 
 ## Knockout Form
 To capture form submission in a javascript function following enter/click, add a submit binding handler to the form.  This can be pretty nifty for arranging ajax calls.  In the below example `addToCart` is the javascript function that is called upon form submission.
@@ -132,7 +136,7 @@ To capture form submission in a javascript function following enter/click, add a
 $form = KnockoutForm::create(
     $this,
     'Form',
-    FieldList::create( 
+    FieldList::create(
     ...
 $form->setSubmit('addToCart');
 ```
@@ -152,29 +156,21 @@ this.addToCart = function(formElement){
     }
   }).done(function(data) {
     console.log(data);
-  });  
+  });
 }
-```
-
-## Debugging an Observable
-To see the values of an observable create a subscription:
-```javascript
-this.flightMenu.subscribe(function(value) {
-    console.log(value);
-});
 ```
 
 ## Methods
 ### Binding Type
-* `setBindingType(string)` used to set the binding type as created in [Knockoutjs](http://knockoutjs.com/documentation/introduction.html).
-* `getbindingType()` provides the current Binding Type
+* `setBindingType(string)` used to set the [Knockoutjs](http://knockoutjs.com/documentation/introduction.html) bindings.
+* `getbindingType()` provides the current Knockout Binding Handler
 
 ### Observable
 * `setObservable(string)` required on all Knockout forms that need validation.  Set the observable that is defined within the ViewModel of your javascript file.
 * `getObservable()` provides the name of the observable defined on the field.
 
 ### Has Focus
-* `setHasFocus(boolean)` set true on a field to provide focus upon page load.  Set one per form.
+* `setHasFocus(boolean)` set `true` on a field to provide focus upon page load.  Set one per form.
 * `getHasFocus()` returns a boolean.
 
 ### Other Bindings
@@ -182,11 +178,11 @@ this.flightMenu.subscribe(function(value) {
 * `getOtherBindings()` returns the additional binding handlers added to a field.
 
 ### Disabled Class (`KnockoutFormAction` only)
-* `setDisabledClass(string)` set the class for the submit button when validation checks return false.  Defaults to `FormAction_Disabled`.
+* `setDisabledClass(string)` set the class for the submit button when validation checks return false.  Default is `FormAction_Disabled`.
 * `getDisabledClass()` returns the disabled class on the KnockoutFormAction field.
 
 ### Submit Binding (`KnockoutForm` only)
-* `setSubmit(string)` set the javascript function to be called upon form submission.  
+* `setSubmit(string)` set the javascript function to be called upon form submission.
 * `getSubmit()` returns the javascript function used on the KnockoutForm.
 
 ## Extensions
@@ -197,14 +193,14 @@ Replace fields in another Silverstripe Module through extension points with Knoc
 ```php
 function updateForm(&$form){
   $fields = $form->Fields();
-  
+
   // form field
   $fields->replaceField('FirstName', KnockoutTextField::create('FirstName', 'FirstName')
     ->setObservable('firstName')
     ->setHasFocus(true)
     ->setValue($fields->fieldByName('FirstName')->Value())
   );
-  
+
   // KnockoutConfirmedPasswordField - just the same as above
   $fields->replaceField('Password', KnockoutConfirmedPasswordField::create('Password', 'Password')->setObservables(['userPassword', 'userConfirmedPassword']));
 

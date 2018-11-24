@@ -1,5 +1,5 @@
 <?php
-namespace Knockout;
+namespace AntonyThorpe\Knockout;
 
 trait CommonComposite
 {
@@ -27,4 +27,3 @@ trait CommonComposite
         return $this->children->column('observable');
     }
 }
-

@@ -7,4 +7,5 @@
 /.travis.yml export-ignore
 /changelog.md export-ignore
 /contributing.md export-ignore
-/LICENSE
+/phpunit.xml.dist export-ignore
+/client/jsexample export-ignore

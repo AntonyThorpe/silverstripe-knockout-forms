@@ -1,5 +1,9 @@
 <?php
+
+namespace AntonyThorpe\Knockout;
+
 require_once('Common.php');
+use SilverStripe\Forms\PasswordField;
 
 /**
  * KnockoutPasswordField
@@ -9,7 +13,7 @@ require_once('Common.php');
  */
 class KnockoutPasswordField extends PasswordField
 {
-    use \Knockout\Common;
+    use \AntonyThorpe\Knockout\Common;
 
     /**
      * bindingType
@@ -44,7 +48,7 @@ class KnockoutPasswordField extends PasswordField
     {
         parent::__construct($name, $title, $value);
         $this->addExtraClass('password');
-        $this->setTemplate('KnockoutTextField');
+        $this->setTemplate('AntonyThorpe\Knockout\KnockoutTextField');
         $this->observable = 'password';
         $this->setAttribute('spellcheck', 'false');
     }

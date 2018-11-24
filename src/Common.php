@@ -1,5 +1,6 @@
 <?php
-namespace Knockout;
+
+namespace AntonyThorpe\Knockout;
 
 trait Common
 {

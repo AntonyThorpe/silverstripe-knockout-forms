@@ -1,23 +1,29 @@
 <?php
+
+namespace AntonyThorpe\Knockout\Tests;
+
+use SilverStripe\Dev\SapphireTest;
+use AntonyThorpe\Knockout\KnockoutEmailField;
+
 /**
  * KnockoutEmailFieldTest
  */
-class KnockoutEmailFieldTest extends SapphireTest {
+class KnockoutEmailFieldTest extends SapphireTest
+{
 
-	public function testKnockoutEmailField() {
-		$field = KnockoutEmailField::create("MyField", "My Field")
+    public function testKnockoutEmailField()
+    {
+        $field = KnockoutEmailField::create("MyField", "My Field")
             ->setObservable('email')
             ->setHasFocus(true);
-
-		$this->assertEquals(
+        $this->assertEquals(
             "email",
             $field->getObservable(),
             "observable is set"
         );
-		$this->assertTrue(
+        $this->assertTrue(
             $field->getHasFocus(),
             "Focus is set to True"
         );
-	}	
+    }
 }
-

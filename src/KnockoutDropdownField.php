@@ -1,5 +1,9 @@
 <?php
+
+namespace AntonyThorpe\Knockout;
+
 require_once('Common.php');
+use SilverStripe\Forms\DropdownField;
 
 /**
  * KnockoutDropdownField
@@ -9,7 +13,7 @@ require_once('Common.php');
  */
 class KnockoutDropdownField extends DropdownField
 {
-    use \Knockout\Common;
+    use \AntonyThorpe\Knockout\Common;
 
     /**
      * bindingType
@@ -30,7 +34,7 @@ class KnockoutDropdownField extends DropdownField
         "OtherBindings" => "Varchar",
         "HasFocus" => "Boolean"
     );
-    
+
     /**
      * Constructor
      *
@@ -38,11 +42,10 @@ class KnockoutDropdownField extends DropdownField
      * @param string $title The field title
      * @param array $source An map of the dropdown items
      * @param string $value The current value
-     * @param Form $form The parent form
      */
-    public function __construct($name, $title = null, $source = array(), $value = '', $form = null)
+    public function __construct($name, $title = null, $source = array(), $value = '')
     {
-        parent::__construct($name, $title, $source, $value, $form);
+        parent::__construct($name, $title, $source, $value);
         $this->setAttribute('class', 'dropdown');
     }
 }

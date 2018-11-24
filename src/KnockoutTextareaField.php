@@ -1,6 +1,10 @@
 <?php
+
+namespace AntonyThorpe\Knockout;
+
 require_once('Common.php');
-    
+use SilverStripe\Forms\TextareaField;
+
 /**
  * KnockoutTextareaField
  *
@@ -8,7 +12,7 @@ require_once('Common.php');
  */
 class KnockoutTextareaField extends TextareaField
 {
-    use \Knockout\Common;
+    use \AntonyThorpe\Knockout\Common;
 
     /**
      * bindingType

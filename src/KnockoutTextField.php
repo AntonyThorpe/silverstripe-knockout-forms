@@ -1,5 +1,9 @@
 <?php
+
+namespace AntonyThorpe\Knockout;
+
 require_once('Common.php');
+use SilverStripe\Forms\TextField;
 
 /**
  * KnockoutTextField
@@ -8,7 +12,7 @@ require_once('Common.php');
  */
 class KnockoutTextField extends TextField
 {
-    use \Knockout\Common;
+    use \AntonyThorpe\Knockout\Common;
 
     /**
      * bindingType
@@ -39,7 +43,7 @@ class KnockoutTextField extends TextField
      * @param null|string $title
      * @param string $value
      * @param null|int $maxLength
-     * @param null|Form $form
+     * @param null|object $form
      */
     public function __construct($name, $title = null, $value = '', $maxLength = null, $form = null)
     {

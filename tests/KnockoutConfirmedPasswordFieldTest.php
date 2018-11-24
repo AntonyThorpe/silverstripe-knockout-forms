@@ -1,24 +1,31 @@
 <?php
+
+namespace AntonyThorpe\Knockout\Tests;
+
+use SilverStripe\Dev\SapphireTest;
+use AntonyThorpe\Knockout\KnockoutConfirmedPasswordField;
+
 /**
  * KnockoutConfirmedPasswordFieldTest
  */
-class KnockoutConfirmedPasswordFieldTest extends SapphireTest {
-
-	public function testKnockoutConfirmedPasswordField() {
-    	$field = KnockoutConfirmedPasswordField::create("MyField", "My Field");
+class KnockoutConfirmedPasswordFieldTest extends SapphireTest
+{
+    public function testKnockoutConfirmedPasswordField()
+    {
+        $field = KnockoutConfirmedPasswordField::create("MyField", "My Field");
         $fields = $field->children;
         $password_field = $fields->fieldByName('MyField[_Password]');
         $password_confirmed_field = $fields->fieldByName('MyField[_ConfirmPassword]');
 
         $this->assertNotNull(
-                $password_field,
-                "password field is not null"
+            $password_field,
+            "password field is not null"
         );
         $this->assertNotNull(
-                $password_confirmed_field,
-                "password confirmed field is not null"
+            $password_confirmed_field,
+            "password confirmed field is not null"
         );
-    	$this->assertEquals(
+        $this->assertEquals(
             "password",
             $password_field->getObservable(),
             "observable is set to password by default in the Password field"
@@ -35,9 +42,8 @@ class KnockoutConfirmedPasswordFieldTest extends SapphireTest {
         );
 
 
-	
         $field2 = KnockoutConfirmedPasswordField::create("MyField2", "My Field2")
-                ->setObservables(['password2', 'confirmedPassword2']);
+            ->setObservables(['password2', 'confirmedPassword2']);
         $fields2 = $field2->children;
 
         $password_field2 = $fields2->fieldByName('MyField2[_Password]');
@@ -60,4 +66,3 @@ class KnockoutConfirmedPasswordFieldTest extends SapphireTest {
         );
     }
 }
-

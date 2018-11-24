@@ -1,12 +1,12 @@
 <?php
 
+namespace AntonyThorpe\Knockout;
+
 /**
- * KnockoutForm
- *
  * Adds a submit binding handlier to the form element to capture click/enter events
  * Delivers the form element to the javascript function
  */
-class KnockoutForm extends Form
+class KnockoutForm extends \SilverStripe\Forms\Form
 {
 
     /**
@@ -40,7 +40,7 @@ class KnockoutForm extends Form
     /**
      * getSubmit
      *
-     * @return boolean
+     * @return string
      */
     public function getSubmit()
     {

@@ -1,4 +1,4 @@
-<div <% if $OtherBindings %>data-bind="$OtherBindings"<% end_if %> id="$HolderID" class="field<% if $extraClass %> $extraClass<% end_if %>" $AttributesHTML>
+<div <% if $OtherBindings %>data-bind="$OtherBindings"<% end_if %> id="$HolderID" class="field<% if $extraClass %> $extraClass<% end_if %>">
 	<% if $Title %><label class="left" for="$ID">$Title</label><% end_if %>
 	<div class="middleColumn">
 		$Field

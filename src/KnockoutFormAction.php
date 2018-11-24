@@ -1,4 +1,7 @@
 <?php
+
+namespace AntonyThorpe\Knockout;
+
 require_once('Common.php');
 
 /**
@@ -6,10 +9,10 @@ require_once('Common.php');
  *
  * Wrap HTML in an Knockout if statement to disable the submit key when invalid (as per Knockout Validation)
  */
-class KnockoutFormAction extends FormAction
+class KnockoutFormAction extends \SilverStripe\Forms\FormAction
 {
 
-    use \Knockout\Common;
+    use \AntonyThorpe\Knockout\Common;
 
     /**
      * $disabledClass
@@ -46,7 +49,7 @@ class KnockoutFormAction extends FormAction
     /**
      * getDisabledClass
      *
-     * @return boolean
+     * @return string
      */
     public function getDisabledClass()
     {
