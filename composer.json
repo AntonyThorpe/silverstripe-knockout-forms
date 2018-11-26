@@ -1,7 +1,7 @@
 {
 	"name": "antonythorpe/silverstripe-knockout-forms",
 	"description": "Provides an enhanced UX using the Knockout MVVM JavaScript library, plus an associated validation plugin, with Silverstripe forms.  Silverstripe generates a form, specifying the Knockout styled form fields, and validation needs are added to observables via a Knockout js extension.  Default messages are available or can be customised.  The submit button will only be enabled upon satisfaction of all the validation rules.",
-	"type": "silverstripe/vendormodule",
+	"type": "silverstripe-vendormodule",
 	"keywords": ["SilverStripe", "forms", "form validation", "Knockout", "Knockoutjs", "Knockout-Validation"],
     "require": {
 		"silverstripe/framework": "^4.0.0"
