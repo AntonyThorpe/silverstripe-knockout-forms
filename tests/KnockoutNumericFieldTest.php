@@ -25,5 +25,9 @@ class KnockoutNumericFieldTest extends SapphireTest
             $field->getHasFocus(),
             "Focus is set to True"
         );
+        $this->assertContains(
+            '<input data-bind="textInput: seatNumber, setKnockout:{value:50}, hasFocus: true"',
+            $field->Field()->getValue()
+        );
     }
 }

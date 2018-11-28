@@ -46,6 +46,6 @@ class KnockoutDropdownField extends DropdownField
     public function __construct($name, $title = null, $source = array(), $value = '')
     {
         parent::__construct($name, $title, $source, $value);
-        $this->setAttribute('class', 'dropdown');
+        $this->setAttribute('class', 'form-control');
     }
 }

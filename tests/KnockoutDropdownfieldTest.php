@@ -28,5 +28,9 @@ class KnockoutDropdownFieldTest extends SapphireTest
             $field->getObservable(),
             "observable can be obtained"
         );
+        $this->assertContains(
+            '<select data-bind="value: spaceship, setKnockout:{value:\'Blast Off\'}"',
+            $field->Field()->getValue()
+        );
     }
 }

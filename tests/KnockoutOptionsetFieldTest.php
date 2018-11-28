@@ -22,7 +22,7 @@ class KnockoutOptionsetFieldTest extends SapphireTest
             ),
             'Zero Gravity Pillow'
         )->setObservable('accessories')
-            ->setOtherBindings("blah: console.log('blast-off')")
+            ->setOtherBindings("blah: someFunction")
             ->setHasFocus(true);
 
         $this->assertEquals(
@@ -31,7 +31,7 @@ class KnockoutOptionsetFieldTest extends SapphireTest
             "observable is set"
         );
         $this->assertEquals(
-            "blah: console.log('blast-off')",
+            "blah: someFunction",
             $field->getOtherBindings(),
             "other bindings are set"
         );
@@ -43,6 +43,10 @@ class KnockoutOptionsetFieldTest extends SapphireTest
         $this->assertTrue(
             $field->getHasFocus(),
             "Focus is set to True"
+        );
+        $this->assertContains(
+            '<input data-bind="checked: accessories, blah: someFunction"',
+            $field->Field()->getValue()
         );
     }
 }

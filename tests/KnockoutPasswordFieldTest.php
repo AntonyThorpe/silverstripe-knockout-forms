@@ -24,5 +24,9 @@ class KnockoutPasswordFieldTest extends SapphireTest
             $field->getHasFocus(),
             "Focus is set to True"
         );
+        $this->assertContains(
+            '<input data-bind="textInput: password, hasFocus: true"',
+            $field->Field()->getValue()
+        );
     }
 }

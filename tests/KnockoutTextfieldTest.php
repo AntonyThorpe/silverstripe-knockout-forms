@@ -14,8 +14,6 @@ class KnockoutTextFieldTest extends SapphireTest
     {
         $field = KnockoutTextField::create("MyField", "My Field", null, 50)
             ->setObservable('spaceship')
-            ->setBindingType('value')
-            ->setOtherBindings("valueUpdate: 'input'")
             ->setHasFocus(true);
 
         $this->assertEquals(
@@ -24,25 +22,17 @@ class KnockoutTextFieldTest extends SapphireTest
             "observable is set"
         );
         $this->assertEquals(
-            "valueUpdate: 'input'",
-            $field->getOtherBindings(),
-            "other bindings are set"
-        );
-        $this->assertEquals(
-            "value",
-            $field->getBindingType(),
-            "Binding Type is set"
-        );
-
-        $field->setBindingType('textInput');
-        $this->assertEquals(
             "textInput",
             $field->getBindingType(),
-            "Binding Type is reset"
+            "Binding Type is set"
         );
         $this->assertTrue(
             $field->getHasFocus(),
             "Focus is set to True"
+        );
+        $this->assertContains(
+            '<input data-bind="textInput: spaceship, hasFocus: true"',
+            $field->Field()->getValue()
         );
     }
 }

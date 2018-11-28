@@ -40,6 +40,10 @@ class KnockoutConfirmedPasswordFieldTest extends SapphireTest
             $field->getObservables(),
             "The function getObservables returns an array of the observables set on the child fields"
         );
+        $this->assertContains(
+            '<input data-bind="textInput: confirmedPassword" type="password"',
+            $field->Field()
+        );
 
 
         $field2 = KnockoutConfirmedPasswordField::create("MyField2", "My Field2")
@@ -63,6 +67,10 @@ class KnockoutConfirmedPasswordFieldTest extends SapphireTest
             ['password2', 'confirmedPassword2'],
             $field2->getObservables(),
             "The function getObservables returns an array of the observables set on the child fields"
+        );
+        $this->assertContains(
+            '<input data-bind="textInput: confirmedPassword2"',
+            $field2->Field()
         );
     }
 }
