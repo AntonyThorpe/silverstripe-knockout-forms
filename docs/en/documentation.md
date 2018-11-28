@@ -44,6 +44,8 @@ self.confirmedPassword = ko.observable().extend({
         message: "Passwords must match"
     }
 });
+
+self.checkboxField = ko.observable();
 ```
 Knockout-Validation has a number of built in [rules](https://github.com/Knockout-Contrib/Knockout-Validation/wiki/Native-Rules) or you can add some [custom ones](https://github.com/Knockout-Contrib/Knockout-Validation/wiki/User-Contributed-Rules) (e.g. the `areSame` rule in the `client/jsexample/jsexample.js` file useful for password confirmation).
 
@@ -79,8 +81,10 @@ $fields = new FieldList(
         'Rocket Replica' => 'Rocket Replica'
     ))->setObservable('accessories')
         ->setValue('Zero Gravity Pillow'),
-    KnockoutConfirmedPasswordField::create('Password', 'Password')
-      ->setObservables(['userPassword', 'userConfirmedPassword']) // for custom observable names (default is 'password' and 'confirmedPassword')
+  KnockoutConfirmedPasswordField::create('Password', 'Password')
+    ->setObservables(['userPassword', 'userConfirmedPassword']) // for custom observable names (default is 'password' and 'confirmedPassword')
+    KnockoutCheckboxField::create('CheckboxExample', 'Checkbox Example')
+      ->setObservable('checkboxField')
 );
 ```
 The above fields create the below HTML within the div.middleColumn.  Note the contents of the `data-bind` attribute.
@@ -106,6 +110,8 @@ The above fields create the below HTML within the div.middleColumn.  Note the co
 <input data-bind="textInput: password" type="password" name="Password[_Password]" class="text password password" id="Password-_Password">
 ...
 <input data-bind="textInput: confirmedPassword" type="password" name="Password[_ConfirmPassword]" class="text password password" id="Password-_ConfirmPassword">
+...
+<input data-bind="checked: checkboxField" type="checkbox" name="CheckboxExample" value="1" class="knockoutcheckbox form-check-input" id="KnockoutForm_Form_CheckboxExample">
 ```
 From the above examples you will note some additional methods on the form fields.  They help create the `data-bind` attribute value that you see in the HTML.  These additional methods are common to all Knockout Fields with exception of the disabled methods in `KnockoutFormAction`.  All setters return $this so that they can be chained.  All the getters are accessible through the templates.
 

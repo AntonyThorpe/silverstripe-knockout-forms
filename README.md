@@ -32,7 +32,7 @@ Add validation needs to the observables in a Knockoutjs viewModel.  Next, utilis
 [Index](/docs/en/index.md)
 
 ## Future Development Ideas
-- Add additional fields e.g. checkbox field, etc.
+- Add additional fields
 - Explore the use of [knockout-pre-render](https://github.com/ErikSchierboom/knockout-pre-rendered) for the display of data in a grid (would replace the setKnockout binding handler and restructure the templates/tests).  This library is currently only one dimensional.
 
 ## Pull Requests are Welcome
