@@ -16,6 +16,7 @@ use AntonyThorpe\Knockout\KnockoutEmailField;
 use AntonyThorpe\Knockout\KnockoutTextareaField;
 use AntonyThorpe\Knockout\KnockoutOptionsetField;
 use AntonyThorpe\Knockout\KnockoutConfirmedPasswordField;
+use AntonyThorpe\Knockout\KnockoutCheckboxField;
 use AntonyThorpe\Knockout\KnockoutFormAction;
 
 class KnockoutFormTest_Controller extends Controller implements TestOnly
@@ -81,7 +82,9 @@ class KnockoutFormTest_Controller extends Controller implements TestOnly
                     'Zero Gravity Pillow'
                 )->setObservable('accessories')
                     ->setOtherBindings("blah: someOtherFunction"),
-                KnockoutConfirmedPasswordField::create('Password', 'Password')
+                KnockoutConfirmedPasswordField::create('Password', 'Password'),
+                KnockoutCheckboxField::create('CheckboxFieldExample', 'Checkbox Field Example')
+                    ->setObservable('checkboxField')
                 // add any new knockout fields here and assert above
             ),
             FieldList::create(

@@ -106,6 +106,11 @@ class KnockoutFormTest extends FunctionalTest
             $body,
             'KnockoutConfirmedPasswordField has a child with an obserable of "confirmedPassword"'
         );
+        $this->assertContains(
+            'data-bind="checked: checkboxField"',
+            $body,
+            'KnockoutCheckboxField has an obserable of "checkboxField"'
+        );
         // add additional tests here after adding to the form below
     }
 }

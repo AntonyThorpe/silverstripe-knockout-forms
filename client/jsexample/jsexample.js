@@ -85,6 +85,8 @@
         self.addToCart = function(){
             return null;
         }
+
+        self.checkboxField = ko.observable();
 	}
 
 	ko.validation.registerExtenders(); // for Knockout Validation
