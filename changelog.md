@@ -1,5 +1,6 @@
 # Change Log of Silverstripe Knockout Forms
 
+* 2.1.0 Added KnockoutSwitchField
 * 2.0.0 Updated for SilverStripe 4
 * 1.3.0 Added KnockoutConfirmedPasswordField and KnockoutPasswordField
 * 1.2.3 Updated classes for PSR-2

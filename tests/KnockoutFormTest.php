@@ -4,7 +4,7 @@ namespace AntonyThorpe\Knockout\Tests;
 
 use SilverStripe\Dev\FunctionalTest;
 use SilverStripe\Core\Config\Config;
-use AntonyThorpe\Knockout\Tests\KnockoutFormTest_Controller;
+use AntonyThorpe\Knockout\Tests\KnockoutFormTestController;
 
 /**
  * KnockoutFormTest
@@ -16,7 +16,7 @@ class KnockoutFormTest extends FunctionalTest
     protected static $disable_theme = true;
 
     protected static $extra_controllers = [
-        KnockoutFormTest_Controller::class
+        KnockoutFormTestController::class
     ];
 
     public function setUp()
@@ -27,7 +27,7 @@ class KnockoutFormTest extends FunctionalTest
 
     public function testKnockoutForm()
     {
-        $page = $this->get('KnockoutFormTest_Controller');
+        $page = $this->get('KnockoutFormTestController');
         $this->assertEquals(200, $page->getStatusCode(), "a page should load");
         $body = $page->getBody();
 
@@ -110,6 +110,11 @@ class KnockoutFormTest extends FunctionalTest
             'data-bind="checked: checkboxField"',
             $body,
             'KnockoutCheckboxField has an obserable of "checkboxField"'
+        );
+        $this->assertContains(
+            'data-bind="checked: switchField"',
+            $body,
+            'KnockoutSwitchField has an obserable of "switchField"'
         );
         // add additional tests here after adding to the form below
     }

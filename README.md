@@ -11,7 +11,6 @@ Provides an enhanced UX for Silverstripe forms using the Knockout MVVM JavaScrip
 ## Why use this Silverstripe module?
 * Prevent incorrect form submission
 * Live validation responses
-* Dynamic if needed
 * Present messages via span element or tooltip
 * Browser support back to ie6
 
@@ -19,7 +18,7 @@ Provides an enhanced UX for Silverstripe forms using the Knockout MVVM JavaScrip
 Add validation needs to the observables in a Knockoutjs viewModel.  Next, utilising the Knockout Form Fields, use Silverstripe to create the form.  Upon bind, the field values are passed into the observables via a custom binding handler.  The rules placed upon the observable will control the field validation.
 
 ## The Approach of this Module
-- Extend Silverstripe form fields just enough to place a Knockout observable and the value on the element
+- Extend Silverstripe form fields to place a Knockout observable and the value on the element
 - Use Knockout-Validation to validate the fields
 - Option to disable the submit button until all rules are satisfied
 
@@ -74,8 +73,8 @@ Adapt the Frameworks form templates to incorporate Knockout's binding handlers a
 
 ### Tests
 * Create a model test for the new form field
-* Update `KnockoutFormTest.php` and `KnockoutFormTest_Controller.php` to test the creation of the binding handler in HTML.
- * Add the new Knockout field to the form function within the KnockoutFormTest_Controller class
+* Update `KnockoutFormTest.php` and `KnockoutFormTestController.php` to test the creation of the binding handler in HTML.
+ * Add the new Knockout field to the form function within the KnockoutFormTestController class
  * Add a new assertion to the testKnockoutForm function within the KnockoutFormTest class
  * Add to `docs/en/documentation.md`
 

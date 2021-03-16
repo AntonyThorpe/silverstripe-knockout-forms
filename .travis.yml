@@ -4,8 +4,10 @@ dist: trusty
 
 matrix:
   include:
-    - php: 7.2
+    - php: 7.4
       env: DB=MYSQL
+    - php: 7.4
+      env: DB=PGSQL
 
 before_script:
   # Init PHP
@@ -14,6 +16,7 @@ before_script:
 
   # Install composer dependencies
   - composer validate
+  - if [[ $DB == PGSQL ]]; then composer require silverstripe/postgresql:^2.2 --no-update; fi
   - composer require --prefer-dist --prefer-stable --no-update --no-suggest silverstripe/recipe-cms:^4
   - composer require --prefer-dist --prefer-stable --no-update --no-suggest phpunit/phpunit:^5.7
   - composer install --prefer-dist --no-interaction --no-progress --no-suggest --optimize-autoloader --verbose --profile

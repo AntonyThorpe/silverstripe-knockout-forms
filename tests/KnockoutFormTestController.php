@@ -17,9 +17,10 @@ use AntonyThorpe\Knockout\KnockoutTextareaField;
 use AntonyThorpe\Knockout\KnockoutOptionsetField;
 use AntonyThorpe\Knockout\KnockoutConfirmedPasswordField;
 use AntonyThorpe\Knockout\KnockoutCheckboxField;
+use AntonyThorpe\Knockout\KnockoutSwitchField;
 use AntonyThorpe\Knockout\KnockoutFormAction;
 
-class KnockoutFormTest_Controller extends Controller implements TestOnly
+class KnockoutFormTestController extends Controller implements TestOnly
 {
     public function __construct()
     {
@@ -40,7 +41,7 @@ class KnockoutFormTest_Controller extends Controller implements TestOnly
     public function Link($action = null)
     {
         return Controller::join_links(
-            'KnockoutFormTest_Controller',
+            'KnockoutFormTestController',
             $this->getRequest()->latestParam('Action'),
             $this->getRequest()->latestParam('ID'),
             $action
@@ -84,7 +85,9 @@ class KnockoutFormTest_Controller extends Controller implements TestOnly
                     ->setOtherBindings("blah: someOtherFunction"),
                 KnockoutConfirmedPasswordField::create('Password', 'Password'),
                 KnockoutCheckboxField::create('CheckboxFieldExample', 'Checkbox Field Example')
-                    ->setObservable('checkboxField')
+                    ->setObservable('checkboxField'),
+                KnockoutSwitchField::create('SwitchFieldExample', 'Switch Field Example')
+                        ->setObservable('switchField')
                 // add any new knockout fields here and assert above
             ),
             FieldList::create(
