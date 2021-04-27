@@ -10,7 +10,7 @@ use AntonyThorpe\Knockout\KnockoutSwitchField;
  */
 class KnockoutSwitchFieldTest extends SapphireTest
 {
-    public function testKnockoutCheckboxField()
+    public function testKnockoutSwitchField()
     {
         $field = KnockoutSwitchField::create("MyField", "This is a switchField")
             ->setObservable('switchField');
