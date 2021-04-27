@@ -18,6 +18,7 @@ use AntonyThorpe\Knockout\KnockoutOptionsetField;
 use AntonyThorpe\Knockout\KnockoutConfirmedPasswordField;
 use AntonyThorpe\Knockout\KnockoutCheckboxField;
 use AntonyThorpe\Knockout\KnockoutSwitchField;
+use AntonyThorpe\Knockout\KnockoutToggleCompositeButtonField;
 use AntonyThorpe\Knockout\KnockoutFormAction;
 
 class KnockoutFormTestController extends Controller implements TestOnly
@@ -87,7 +88,15 @@ class KnockoutFormTestController extends Controller implements TestOnly
                 KnockoutCheckboxField::create('CheckboxFieldExample', 'Checkbox Field Example')
                     ->setObservable('checkboxField'),
                 KnockoutSwitchField::create('SwitchFieldExample', 'Switch Field Example')
-                        ->setObservable('switchField')
+                    ->setObservable('switchField'),
+                KnockoutToggleCompositeButtonField::create(
+                    "MyToggleCompositeButtonField",
+                    "This is a knockout composite button field",
+                    [
+                        KnockoutTextField::create('Test1', 'Test1')->setObservable('test1'),
+                        KnockoutTextField::create('Test2', 'Test2')->setObservable('test2')
+                    ]
+                )->setObservable('compositeButtonField')
                 // add any new knockout fields here and assert above
             ),
             FieldList::create(

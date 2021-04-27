@@ -9,7 +9,7 @@ use SilverStripe\Forms\CheckboxField;
  * KnockoutCheckboxField
  *
  * Creates a {@link CheckboxField} with an additional data-bind attribute that
- * links to a Knockout obervable
+ * links to a Knockout observable
  */
 class KnockoutCheckboxField extends CheckboxField
 {

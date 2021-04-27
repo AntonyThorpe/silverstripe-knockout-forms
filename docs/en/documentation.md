@@ -48,6 +48,7 @@ self.confirmedPassword = ko.observable().extend({
 self.checkboxField = ko.observable();
 
 self.switchField = ko.observable();
+self.show = ko.observable();
 ```
 Knockout-Validation has a number of built in [rules](https://github.com/Knockout-Contrib/Knockout-Validation/wiki/Native-Rules) or you can add some [custom ones](https://github.com/Knockout-Contrib/Knockout-Validation/wiki/User-Contributed-Rules) (e.g. the `areSame` rule in the `client/jsexample/jsexample.js` file useful for password confirmation).
 
@@ -88,7 +89,15 @@ $fields = new FieldList(
   KnockoutCheckboxField::create('CheckboxExample', 'Checkbox Example')
       ->setObservable('checkboxField'),
   KnockoutSwitchField::create('SwitchFieldExample', 'Switch Field Example')
-      ->setObservable('switchField')
+      ->setObservable('switchField'),
+  KnockoutToggleCompositeButtonField::create(
+    "MyToggleCompositeButtonField",
+    "This is a knockout composite button field",
+    [
+        KnockoutTextField::create('Test1', 'Test1')->setObservable('test1'),
+        KnockoutTextField::create('Test2', 'Test2')->setObservable('test2')
+    ]
+  )->setObservable('compositeButtonField')
 );
 ```
 The above fields create the below HTML within the div.middleColumn.  Note the contents of the `data-bind` attribute.
@@ -118,6 +127,12 @@ The above fields create the below HTML within the div.middleColumn.  Note the co
 <input data-bind="checked: checkboxField" type="checkbox" name="CheckboxExample" value="1" class="knockoutcheckbox form-check-input" id="KnockoutForm_Form_CheckboxExample">
 ...
 <input data-bind="checked: switchField" type="checkbox" name="SwitchFieldExample" value="1" class="knockoutswitch" id="KnockoutForm_Form_SwitchFieldExample">
+...
+
+<button data-bind="click: function(){ compositeButtonField(!compositeButtonField());
+} class="btn btn-primary btn-sm mb-2 ml-2 mr-2" type="button" aria-expanded="false" aria-controls="toggle">Yes/No</button>"
+<div data-bind="visible: compositeButtonField">
+    <!-- then fields --!>
 ```
 The additional methods on the form fields help create the `data-bind` attribute value that you see in the HTML.  These additional methods are common to all Knockout Fields with exception of the disabled methods in `KnockoutFormAction`.  All setters return $this so that they can be chained.  All the getters are accessible through the templates.
 
@@ -188,6 +203,11 @@ this.addToCart = function(formElement){
 ### Other Bindings
 * `setOtherBindings` provides the ability to add additional bindings to a field, like a tooltip.  e.g. `->setOtherBindings("bsTooltip: {placement: 'right'}")`.  See below for a link to a Bootstrap extension.
 * `getOtherBindings()` returns the additional binding handlers added to a field.
+
+### Label Class (Composite fields only)
+* `setLabelClass(string)` (default: left) set the class for the label element and if set to `left` it will appear on the left of the input element.
+* `getLabelClass()` returns the label class on the field.
+
 
 ### Disabled Class (`KnockoutFormAction` only)
 * `setDisabledClass(string)` set the class for the submit button when validation checks return false.  Default is `FormAction_Disabled`.

@@ -94,28 +94,44 @@ class KnockoutFormTest extends FunctionalTest
         $this->assertContains(
             'data-bind="enable: canSaveInterGalacticAction',
             $body,
-            'KnockoutFormAction has an obserable of "canSaveInterGalacticAction"'
+            'KnockoutFormAction has an observable of "canSaveInterGalacticAction"'
         );
         $this->assertContains(
             'data-bind="textInput: password',
             $body,
-            'KnockoutConfirmedPasswordField has a child with an obserable of "password"'
+            'KnockoutConfirmedPasswordField has a child with an observable of "password"'
         );
         $this->assertContains(
             'data-bind="textInput: confirmedPassword',
             $body,
-            'KnockoutConfirmedPasswordField has a child with an obserable of "confirmedPassword"'
+            'KnockoutConfirmedPasswordField has a child with an observable of "confirmedPassword"'
         );
         $this->assertContains(
             'data-bind="checked: checkboxField"',
             $body,
-            'KnockoutCheckboxField has an obserable of "checkboxField"'
+            'KnockoutCheckboxField has an observable of "checkboxField"'
         );
         $this->assertContains(
             'data-bind="checked: switchField"',
             $body,
-            'KnockoutSwitchField has an obserable of "switchField"'
+            'KnockoutSwitchField has an observable of "switchField"'
         );
-        // add additional tests here after adding to the form below
+        $this->assertContains(
+            ' <button data-bind="click: function(){ compositeButtonField(!compositeButtonField());',
+            $body,
+            'KnockoutToggleCompositeButtonField has a button that shows/hides based upon the observable of "compositeButtonField"'
+        );
+        $this->assertContains(
+            '<div data-bind="visible: compositeButtonField"',
+            $body,
+            'KnockoutToggleCompositeButtonField has an observable of "compositeButtonField"'
+        );
+        $this->assertSame(
+            substr_count($body, 'label class="form-check-label left"'),
+            1,
+            'the label element with class "left" appears once'
+        );
+
+        // add additional tests here after adding to the form in KnockoutFormTestController.php
     }
 }

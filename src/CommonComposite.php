@@ -4,6 +4,13 @@ namespace AntonyThorpe\Knockout;
 trait CommonComposite
 {
     /**
+     * Place the label on the left or right hand side of the switch
+     *
+     * @var string left or other
+     */
+    protected $labelClass = "left";
+
+    /**
      * setObservables
      *
      * @param array $names The names of the knockout observables.
@@ -25,5 +32,27 @@ trait CommonComposite
     public function getObservables()
     {
         return $this->children->column('observable');
+    }
+
+    /**
+     * set the Label class
+     *
+     * @param string $name The name of the label class
+     * @return $this
+     */
+    public function setLabelClass($name)
+    {
+        $this->labelClass = trim($name);
+        return $this;
+    }
+
+    /**
+     * getLabelClass
+     *
+     * @return string The label class
+     */
+    public function getLabelClass()
+    {
+        return $this->labelClass;
     }
 }
