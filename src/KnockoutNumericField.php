@@ -8,7 +8,7 @@ use SilverStripe\Forms\NumericField;
 /**
  * KnockoutNumericField
  *
- * Creates a {@link NumericField} with an additional data-bind attribute that links to a Knockout obervable
+ * Creates a {@link NumericField} with an additional data-bind attribute that links to a Knockout observable
  */
 class KnockoutNumericField extends NumericField
 {

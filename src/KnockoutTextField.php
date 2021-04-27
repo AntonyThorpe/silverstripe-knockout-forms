@@ -8,7 +8,7 @@ use SilverStripe\Forms\TextField;
 /**
  * KnockoutTextField
  *
- * Creates a {@link TextField} with an additional data-bind attribute that links to a Knockout obervable
+ * Creates a {@link TextField} with an additional data-bind attribute that links to a Knockout observable
  */
 class KnockoutTextField extends TextField
 {

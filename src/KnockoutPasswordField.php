@@ -8,7 +8,7 @@ use SilverStripe\Forms\PasswordField;
 /**
  * KnockoutPasswordField
  *
- * Creates a {@link PasswordField} with an additional data-bind attribute that links to a Knockout obervable
+ * Creates a {@link PasswordField} with an additional data-bind attribute that links to a Knockout observable
  * @uses 'password' as the default observable
  */
 class KnockoutPasswordField extends PasswordField

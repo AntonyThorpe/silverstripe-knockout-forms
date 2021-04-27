@@ -9,7 +9,7 @@ use SilverStripe\Forms\DropdownField;
  * KnockoutDropdownField
  *
  * Creates a dropdown field with an additional data-bind attribute that
- * links to a Knockout obervable
+ * links to a Knockout observable
  */
 class KnockoutDropdownField extends DropdownField
 {

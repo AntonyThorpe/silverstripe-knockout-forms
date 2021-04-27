@@ -8,7 +8,7 @@ use SilverStripe\Forms\EmailField;
 /**
  * KnockoutEmailField
  *
- * Creates a {@link EmailField} with an additional data-bind attribute that links to a Knockout obervable
+ * Creates a {@link EmailField} with an additional data-bind attribute that links to a Knockout observable
  */
 class KnockoutEmailField extends EmailField
 {

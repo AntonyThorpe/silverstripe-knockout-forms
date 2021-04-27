@@ -6,7 +6,7 @@ require_once('CommonComposite.php');
 use SilverStripe\Forms\ConfirmedPasswordField;
 
 /**
- * Creates a {@link ConfirmedPasswordField} with an additional data-bind attribute that links to a Knockout obervable
+ * Creates a {@link ConfirmedPasswordField} with an additional data-bind attribute that links to a Knockout observable
  * @uses 'confirmedPassword' as the default observable
  */
 class KnockoutConfirmedPasswordField extends ConfirmedPasswordField

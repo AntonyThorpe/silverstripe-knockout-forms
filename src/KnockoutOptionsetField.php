@@ -9,7 +9,7 @@ use SilverStripe\Forms\OptionsetField;
  * KnockoutOptionsetField
  *
  * Creates a {@link OptionsetField} with an additional data-bind attribute that
- * links to a Knockout obervable
+ * links to a Knockout observable
  */
 class KnockoutOptionsetField extends OptionsetField
 {

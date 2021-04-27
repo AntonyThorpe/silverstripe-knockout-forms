@@ -5,7 +5,7 @@ use SilverStripe\Forms\FieldList;
 use AntonyThorpe\Knockout\KnockoutCheckboxField;
 
 /**
- * Creates a {@link ConfirmedPasswordField} with an additional data-bind attribute that links to a Knockout obervable
+ * Creates a {@link ConfirmedPasswordField} with an additional data-bind attribute that links to a Knockout observable
  * @uses 'confirmedPassword' as the default observable
  */
 class KnockoutSwitchField extends KnockoutCheckboxField
