@@ -25,7 +25,7 @@ class KnockoutTextareaFieldTest extends SapphireTest
             $field->getHasFocus(),
             "Focus is set to True"
         );
-        $this->assertContains(
+        $this->assertStringContainsString(
             '<textarea data-bind="textInput: comments, hasFocus: true"',
             $field->Field()->getValue()
         );

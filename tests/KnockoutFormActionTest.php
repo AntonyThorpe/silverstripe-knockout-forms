@@ -26,7 +26,7 @@ class KnockoutFormActionTest extends SapphireTest
             $action->getObservable(),
             "observable is set"
         );
-        $this->assertContains(
+        $this->assertStringContainsString(
             '<input data-bind="enable: canSave, css:{ \'astroid\': !canSave() }"',
             $action->Field()->getValue()
         );

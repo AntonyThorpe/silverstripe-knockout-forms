@@ -22,7 +22,7 @@ class KnockoutToggleCompositeButtonFieldTest extends SapphireTest
             ]
         )->setObservable('compositeButtonField');
 
-        $this->assertContains(
+        $this->assertStringContainsString(
             '<button data-bind="click: function(){ compositeButtonField(!compositeButtonField());
   }" class="btn btn-primary btn-sm mb-2 ml-2 mr-2" type="button" aria-expanded="false" aria-controls="toggle">
             Yes/No
@@ -31,7 +31,7 @@ class KnockoutToggleCompositeButtonFieldTest extends SapphireTest
             'Contains a button to show/hide based upon the observable'
         );
 
-        $this->assertContains(
+        $this->assertStringContainsString(
             '<div data-bind="visible: compositeButtonField"',
             $field->Field()->getValue(),
             'Contains the visible data-bind'

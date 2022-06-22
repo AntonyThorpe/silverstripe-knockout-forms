@@ -15,7 +15,7 @@ class KnockoutSwitchFieldTest extends SapphireTest
         $field = KnockoutSwitchField::create("MyField", "This is a switchField")
             ->setObservable('switchField');
 
-        $this->assertContains(
+        $this->assertStringContainsString(
             '<input data-bind="checked: switchField',
             $field->Field()->getValue()
         );

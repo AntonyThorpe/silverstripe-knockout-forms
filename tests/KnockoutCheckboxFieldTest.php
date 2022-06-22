@@ -36,7 +36,7 @@ class KnockoutCheckboxFieldTest extends SapphireTest
             $field->getHasFocus(),
             "Focus is set to True"
         );
-        $this->assertContains(
+        $this->assertStringContainsString(
             '<input data-bind="checked: checkboxField, blah: anotherFunction',
             $field->Field()->getValue()
         );

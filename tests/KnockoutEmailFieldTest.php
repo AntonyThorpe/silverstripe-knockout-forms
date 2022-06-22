@@ -25,7 +25,7 @@ class KnockoutEmailFieldTest extends SapphireTest
             $field->getHasFocus(),
             "Focus is set to True"
         );
-        $this->assertContains(
+        $this->assertStringContainsString(
             '<input data-bind="textInput: email, hasFocus: true"',
             $field->Field()->getValue()
         );
