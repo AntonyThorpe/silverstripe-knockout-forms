@@ -94,10 +94,10 @@ $fields = new FieldList(
     "MyToggleCompositeButtonField",
     "This is a knockout composite button field",
     [
-        KnockoutTextField::create('Test1', 'Test1')->setObservable('test1'),
-        KnockoutTextField::create('Test2', 'Test2')->setObservable('test2')
+        KnockoutTextField::create('Test1', 'Test1')->setObservable('$root.test1'),
+        KnockoutTextField::create('Test2', 'Test2')->setObservable('$root.test2')
     ]
-  )->setObservable('compositeButtonField')
+  )->setObservable('toggleCompositeButtonField')
 );
 ```
 The above fields create the below HTML within the div.middleColumn.  Note the contents of the `data-bind` attribute.

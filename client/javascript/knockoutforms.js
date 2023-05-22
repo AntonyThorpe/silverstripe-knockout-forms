@@ -17,7 +17,7 @@
 	/**
 	 * setKnockout Binding Handler
 	 *
-	 * For passing PHP variables and the observable to Knockout 
+	 * For passing PHP variables and the observable to Knockout
 	 * @param HTML element The element the binding handler is attached to
 	 * @param function valueAccessor The value, wrapped in a function, passed from the PHP function into the Knockout observable.
 	 * @param function allBindings Other binding handlers on the element
@@ -30,11 +30,11 @@
 			var observable;
 
 			// obtain the observable from either this binding (needed with a custom binding) or one of Knockouts standard bindings
-			if (unwrapValueAccessor.observable) { // 
+			if (unwrapValueAccessor.observable) { //
 				observable = unwrapValueAccessor.observable;
 			} else {
 				// obtain the observable key from the allBindings Accessor
-				var key = ko.utils.arrayFirst(["visible", "text", "html", "css", "style", "attr", "if", "ifnot", "with", "component", "click", "event", "submit", "enable", "disable", "value", "textInput", "hasFocus", "checked", "options", "selectedOptions"], function(item) {
+				var key = ko.utils.arrayFirst(["visible", "hidden", "text", "html", "class", "css", "style", "attr", "if", "ifnot", "with", "using", "let", "component", "click", "event", "submit", "enable", "disable", "value", "textInput", "hasFocus", "checked", "options", "selectedOptions"], function(item) {
 					return allBindings.has(item);
 				});
 				observable = allBindings.get(key);

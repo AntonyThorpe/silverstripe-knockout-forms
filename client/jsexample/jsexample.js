@@ -90,6 +90,11 @@
         }
 
         self.checkboxField = ko.observable();
+
+        self.switchField = ko.observable();
+        self.toggleCompositeButtonField = ko.observable();
+        self.test1 = ko.observable();
+        self.test2 = ko.observable();
 	}
 
 	ko.validation.registerExtenders(); // for Knockout Validation

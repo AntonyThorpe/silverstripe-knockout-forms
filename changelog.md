@@ -1,5 +1,6 @@
 # Change Log of Silverstripe Knockout Forms
 
+* 3.0.0 Updated for SilverStripe 5
 * 2.3.0 Added KnockoutToggleCompositeButtonField
 * 2.2.0 Added KnockoutSwitchField
 * 2.1.0 Added KnockoutCheckboxField
