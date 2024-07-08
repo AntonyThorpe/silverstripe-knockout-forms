@@ -1,37 +1,44 @@
 <?php
 namespace AntonyThorpe\Knockout;
 
-require_once('Common.php');
-require_once('CommonComposite.php');
+require_once __DIR__ . '/Common.php';
+require_once __DIR__ . '/CommonLabelClass.php';
+require_once __DIR__ . '/CommonBindingType.php';
+use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\ToggleCompositeField;
+
 
 /**
  * Creates a switch field with a visible data-bind on its children
- * @uses 'confirmedPassword' as the default observable
  */
 class KnockoutToggleCompositeButtonField extends ToggleCompositeField
 {
-    use \AntonyThorpe\Knockout\Common;
-    use \AntonyThorpe\Knockout\CommonComposite;
+    use Common;
+    use CommonLabelClass;
+    use CommonBindingType;
+
+    public function __construct(string $name, string $title, array|FieldList $children)
+    {
+        parent::__construct($name, $title, $children);
+        $this->setBindingType('visible');
+    }
 
     /**
-     * bindingType
-     *
-     * KnockoutConfirmedPasswordField needs either 'value' or 'textInput' as a key for the 'data-bind' HTML attribute
-     *
-     * @var string data-bind attribute key
-     * @example  data-bind="input: name, valueUpdate: 'input'" - the binding type is: input.
+     * Set the observables of the child fields
      */
-    protected $bindingType = "visible";
+    public function setObservables(array $names): static
+    {
+        foreach ($this->children as $key => $field) {
+            $field->setObservable($names[$key]);
+        }
+        return $this;
+    }
 
     /**
-     * casting of variables for security purposes
+     * Return the observables used by the children
      */
-    protected $casting = array(
-        "Observable" => "Varchar",
-        "BindingType" => "Varchar",
-        "OtherBindings" => "Varchar",
-        "HasFocus" => "Boolean",
-        "labelAlignment" => "Varchar"
-    );
+    public function getObservables(): array
+    {
+        return $this->children->column('observable');
+    }
 }

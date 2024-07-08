@@ -10,16 +10,12 @@ use AntonyThorpe\Knockout\KnockoutOptionsetField;
  */
 class KnockoutOptionsetFieldTest extends SapphireTest
 {
-    public function testKnockoutOptionsetField()
+    public function testKnockoutOptionsetField(): void
     {
         $field = KnockoutOptionsetField::create(
             "MyField",
             "My Field",
-            array(
-                'Flying High DVD' => 'Flying High DVD',
-                'Zero Gravity Pillow' => 'Zero Gravity Pillow',
-                'Rocket Replica' => 'Rocket Replica'
-            ),
+            ['Flying High DVD' => 'Flying High DVD', 'Zero Gravity Pillow' => 'Zero Gravity Pillow', 'Rocket Replica' => 'Rocket Replica'],
             'Zero Gravity Pillow'
         )->setObservable('accessories')
             ->setOtherBindings("blah: someFunction")

@@ -2,8 +2,10 @@
 
 namespace AntonyThorpe\Knockout;
 
-require_once('Common.php');
+require_once __DIR__ . '/Common.php';
+require_once __DIR__ . '/CommonBindingType.php';
 use SilverStripe\Forms\OptionsetField;
+use ArrayAccess;
 
 /**
  * KnockoutOptionsetField
@@ -13,39 +15,16 @@ use SilverStripe\Forms\OptionsetField;
  */
 class KnockoutOptionsetField extends OptionsetField
 {
-    use \AntonyThorpe\Knockout\Common;
+    use Common;
+    use CommonBindingType;
 
     /**
-     * bindingType
-     *
-     * @var string a data-bind attribute key
-     * @example   <ul data-bind="checked: accessories, etc. "
+     * @example   <ul data-bind="checked: accessories, etc.
      */
-    protected $bindingType = 'checked';
-
-    /**
-     * casting of variables for security purposes
-     *
-     * @see http://docs.silverstripe.org/en/3.1/developer_guides/security/secure_coding/
-     */
-    protected $casting = array(
-        "Observable" => "Varchar",
-        "BindingType" => "Varchar",
-        "OtherBindings" => "Varchar",
-        "HasFocus" => "Boolean"
-    );
-
-    /**
-     * Constructor
-     *
-     * @param string $name The field name
-     * @param string $title The field title
-     * @param array $source An map of the dropdown items
-     * @param mixed $value The current value
-     */
-    public function __construct($name, $title = null, $source = array(), $value = '')
+    public function __construct(string $name, string|null $title = null, array|ArrayAccess $source = [], mixed $value = '')
     {
         parent::__construct($name, $title, $source, $value);
         $this->addExtraClass('optionset');
+        $this->setBindingType('checked');
     }
 }

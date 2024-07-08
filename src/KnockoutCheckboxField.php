@@ -1,9 +1,10 @@
 <?php
-
 namespace AntonyThorpe\Knockout;
 
-require_once('Common.php');
+require_once __DIR__ . '/Common.php';
+require_once __DIR__ . '/CommonBindingType.php';
 use SilverStripe\Forms\CheckboxField;
+use SilverStripe\View\ViewableData;
 
 /**
  * KnockoutCheckboxField
@@ -13,38 +14,19 @@ use SilverStripe\Forms\CheckboxField;
  */
 class KnockoutCheckboxField extends CheckboxField
 {
-    use \AntonyThorpe\Knockout\Common;
+    use Common;
+    use CommonBindingType;
 
     /**
-     * bindingType
-     *
-     * @var string a data-bind attribute key
-     * @example   <input data-bind="checked: wantSpam" />
+     * Set the CSS Class and binding type
      */
-    protected $bindingType = 'checked';
-
-    /**
-     * casting of variables for security purposes
-     *
-     * @see http://docs.silverstripe.org/en/3.1/developer_guides/security/secure_coding/
-     */
-    protected $casting = array(
-        "Observable" => "Varchar",
-        "BindingType" => "Varchar",
-        "OtherBindings" => "Varchar",
-        "HasFocus" => "Boolean"
-    );
-
-    /**
-     * Constructor
-     *
-     * @param string $name The field name
-     * @param string $title The field title
-     * @param mixed $value The current value
-     */
-    public function __construct($name, $title = null, $value = '')
-    {
+    public function __construct(
+        string $name,
+        null|string|ViewableData $title = null,
+        mixed $value = ''
+    ) {
         parent::__construct($name, $title, $value);
         $this->addExtraClass('form-check-input');
+        $this->setBindingType('checked');
     }
 }

@@ -10,16 +10,12 @@ use AntonyThorpe\Knockout\KnockoutDropdownField;
  */
 class KnockoutDropdownFieldTest extends SapphireTest
 {
-    public function testKnockoutDropdownField()
+    public function testKnockoutDropdownField(): void
     {
         $field = KnockoutDropdownField::create(
             "SpaceExploration",
             "Space Exploration",
-            array(
-                "Rocket" => "Rocket",
-                "Launcher" => "Launcher",
-                "Blast Off" => "Blast Off"
-            ),
+            ["Rocket" => "Rocket", "Launcher" => "Launcher", "Blast Off" => "Blast Off"],
             "Blast Off"
         )->setObservable('spaceship');
 

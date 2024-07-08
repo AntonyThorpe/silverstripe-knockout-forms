@@ -10,7 +10,7 @@ use AntonyThorpe\Knockout\KnockoutTextareaField;
  */
 class KnockoutTextareaFieldTest extends SapphireTest
 {
-    public function testKnockoutTextareaField()
+    public function testKnockoutTextareaField(): void
     {
         $field = KnockoutTextareaField::create("MyField", "My Field")
             ->setObservable('comments')

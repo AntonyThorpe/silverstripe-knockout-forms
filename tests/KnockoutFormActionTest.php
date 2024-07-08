@@ -10,7 +10,7 @@ use AntonyThorpe\Knockout\KnockoutFormAction;
  */
 class KnockoutFormActionTest extends SapphireTest
 {
-    public function testKnockoutFormAction()
+    public function testKnockoutFormAction(): void
     {
         $action = KnockoutFormAction::create('doSave', 'Save')
             ->setDisabledClass('astroid')

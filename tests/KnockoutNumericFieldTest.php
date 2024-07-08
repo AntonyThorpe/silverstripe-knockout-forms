@@ -10,7 +10,7 @@ use AntonyThorpe\Knockout\KnockoutNumericField;
  */
 class KnockoutNumericFieldTest extends SapphireTest
 {
-    public function testKnockoutNumericField()
+    public function testKnockoutNumericField(): void
     {
         $field = KnockoutNumericField::create("MyField", "My Field", 50)
             ->setObservable('seatNumber')

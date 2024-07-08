@@ -1,51 +1,36 @@
 <?php
 namespace AntonyThorpe\Knockout;
 
-require_once('Common.php');
-require_once('CommonComposite.php');
+require_once __DIR__ . '/Common.php';
+require_once __DIR__ . '/CommonLabelClass.php';
+require_once __DIR__ . '/CommonBindingType.php';
 use SilverStripe\Forms\ConfirmedPasswordField;
+use SilverStripe\Forms\Form;
 
 /**
- * Creates a {@link ConfirmedPasswordField} with an additional data-bind attribute that links to a Knockout observable
- * @uses 'confirmedPassword' as the default observable
+ * Creates ConfirmedPasswordField with an additional data-bind attribute
+ * that links to a Knockout observable.
+ * Uses 'confirmedPassword' as the default observable on the second field
  */
 class KnockoutConfirmedPasswordField extends ConfirmedPasswordField
 {
-    use \AntonyThorpe\Knockout\Common;
-    use \AntonyThorpe\Knockout\CommonComposite;
+    use Common;
+    use CommonLabelClass;
+    use CommonBindingType;
 
     /**
-     * bindingType
-     *
-     * KnockoutConfirmedPasswordField needs either 'value' or 'textInput' as a key for the 'data-bind' HTML attribute
-     *
-     * @var string data-bind attribute key
-     * @example  data-bind="input: name, valueUpdate: 'input'" - the binding type is: input.
+     * KnockoutConfirmedPasswordField needs either 'value' or 'textInput' as a key
+     *  for the data-bind HTML attribute
+     * @example field data-bind="textInput:confirmedPassword"
      */
-    protected $bindingType = "textInput";
-
-    /**
-     * casting of variables for security purposes
-     *
-     * @see http://docs.silverstripe.org/en/3.1/developer_guides/security/secure_coding/
-     */
-    protected $casting = array(
-        "Observable" => "Varchar",
-        "Observables" => "Array",
-        "BindingType" => "Varchar",
-        "OtherBindings" => "Varchar",
-        "HasFocus" => "Boolean"
-    );
-
-    /**
-     * Constructor
-     *
-     * @param string $name
-     * @param null|string $title
-     * @param string $value
-     */
-    public function __construct($name, $title = null, $value = "", $form = null, $showOnClick = false, $titleConfirmField = null)
-    {
+    public function __construct(
+        string $name,
+        string|null $title = null,
+        mixed $value = "",
+        Form $form = null,
+        bool $showOnClick = false,
+        string|null $titleConfirmField = null
+    ) {
         parent::__construct($name, $title, $value, $form, $showOnClick, $titleConfirmField);
 
         // swap fields for the knockout ones
@@ -65,5 +50,24 @@ class KnockoutConfirmedPasswordField extends ConfirmedPasswordField
         }
 
         $this->setFieldHolderTemplate('AntonyThorpe/Knockout/KnockoutFormField_holder');
+    }
+
+    /**
+     * Set the observables of the child fields
+     */
+    public function setObservables(array $names): static
+    {
+        foreach ($this->children as $key => $field) {
+            $field->setObservable($names[$key]);
+        }
+        return $this;
+    }
+
+    /**
+     * Return the observables used by the children
+     */
+    public function getObservables(): array
+    {
+        return $this->children->column('observable');
     }
 }

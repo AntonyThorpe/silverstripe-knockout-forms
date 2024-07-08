@@ -56,16 +56,6 @@ class KnockoutNameOfField extends ????Field
      * bindingType
      */
     protected $bindingType = "theKnockoutBindingHandler";
-
-    /**
-     * casting of variables for security purposes
-     */
-    protected $casting = array(
-        "Observable" => "Varchar",
-        "BindingType" => "Varchar",
-        "OtherBindings" => "Varchar",
-        "HasFocus" => "Varchar"
-    );
 ```
 If needed add the `__construct` function to overriding the field's class.
 

@@ -11,7 +11,7 @@ use AntonyThorpe\Knockout\KnockoutEmailField;
 class KnockoutEmailFieldTest extends SapphireTest
 {
 
-    public function testKnockoutEmailField()
+    public function testKnockoutEmailField(): void
     {
         $field = KnockoutEmailField::create("MyField", "My Field")
             ->setObservable('email')

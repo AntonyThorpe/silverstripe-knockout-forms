@@ -13,7 +13,7 @@ use AntonyThorpe\Knockout\Tests\KnockoutFormTestController;
  */
 class KnockoutFormTest extends FunctionalTest
 {
-    protected static $disable_theme = true;
+    protected static bool $disable_theme = true;
 
     protected static $extra_controllers = [
         KnockoutFormTestController::class
@@ -25,7 +25,7 @@ class KnockoutFormTest extends FunctionalTest
         Config::modify()->set('SSViewer', 'source_file_comments', true);
     }
 
-    public function testKnockoutForm()
+    public function testKnockoutForm(): void
     {
         $page = $this->get('KnockoutFormTestController');
         $this->assertEquals(200, $page->getStatusCode(), "a page should load");

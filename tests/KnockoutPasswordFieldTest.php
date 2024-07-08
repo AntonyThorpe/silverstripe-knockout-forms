@@ -10,7 +10,7 @@ use AntonyThorpe\Knockout\KnockoutPasswordField;
  */
 class KnockoutPasswordFieldTest extends SapphireTest
 {
-    public function testKnockoutPasswordField()
+    public function testKnockoutPasswordField(): void
     {
         $field = KnockoutPasswordField::create("MyField", "My Field")
             ->setHasFocus(true);

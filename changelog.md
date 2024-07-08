@@ -1,5 +1,6 @@
 # Change Log of Silverstripe Knockout Forms
 
+* 4.0.0 Upgrade to PHP 8.1
 * 3.0.0 Updated for SilverStripe 5
 * 2.3.0 Added KnockoutToggleCompositeButtonField
 * 2.2.0 Added KnockoutSwitchField

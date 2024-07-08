@@ -2,6 +2,7 @@
 
 namespace AntonyThorpe\Knockout\Tests;
 
+use SilverStripe\Control\HTTPResponse;
 use SilverStripe\Dev\TestOnly;
 use SilverStripe\Control\Controller;
 use AntonyThorpe\Knockout\KnockoutForm;
@@ -31,13 +32,17 @@ class KnockoutFormTestController extends Controller implements TestOnly
         }
     }
 
-    private static $allowed_actions = array('Form');
+    /**
+     * @config
+     */
+    private static array $allowed_actions = ['Form'];
 
-    private static $url_handlers = array(
-        '$Action//$ID/$OtherID' => "handleAction",
-    );
+    /**
+     * @config
+     */
+    private static array $url_handlers = ['$Action//$ID/$OtherID' => "handleAction"];
 
-    protected $template = 'BlankPage';
+    protected string $template = 'BlankPage';
 
     public function Link($action = null)
     {
@@ -49,7 +54,7 @@ class KnockoutFormTestController extends Controller implements TestOnly
         );
     }
 
-    public function Form()
+    public function Form(): KnockoutForm
     {
         $form = KnockoutForm::create(
             $this,
@@ -64,7 +69,7 @@ class KnockoutFormTestController extends Controller implements TestOnly
                 KnockoutDropdownField::create(
                     'Menu',
                     'Space Menu',
-                    array('1'=>'Light Speed Salad','2'=>'Comet Custard')
+                    ['1'=>'Light Speed Salad', '2'=>'Comet Custard']
                 )->setObservable('menu'),
                 KnockoutNumericField::create('SeatNumber', 'Seat Number', 4)
                     ->setObservable('seatNumber'),
@@ -76,11 +81,7 @@ class KnockoutFormTestController extends Controller implements TestOnly
                 KnockoutOptionsetField::create(
                     'Accessories',
                     'Accessories',
-                    array(
-                        'Flying High DVD' => 'Flying High DVD',
-                        'Zero Gravity Pillow' => 'Zero Gravity Pillow',
-                        'Rocket Replica' => 'Rocket Replica'
-                    ),
+                    ['Flying High DVD' => 'Flying High DVD', 'Zero Gravity Pillow' => 'Zero Gravity Pillow', 'Rocket Replica' => 'Rocket Replica'],
                     'Zero Gravity Pillow'
                 )->setObservable('accessories')
                     ->setOtherBindings("blah: someOtherFunction"),
@@ -109,7 +110,7 @@ class KnockoutFormTestController extends Controller implements TestOnly
         return $form;
     }
 
-    public function doSubmit($data, Form $form, HTTPRequest $request)
+    public function doSubmit(array $data, KnockoutForm $form, HTTPRequest $request): HTTPResponse
     {
         $form->sessionMessage('Test save was successful', 'good');
         return $this->redirectBack();
@@ -117,6 +118,6 @@ class KnockoutFormTestController extends Controller implements TestOnly
 
     public function getViewer($action = null)
     {
-        return new SSViewer('BlankPage');
+        return SSViewer::create('BlankPage');
     }
 }

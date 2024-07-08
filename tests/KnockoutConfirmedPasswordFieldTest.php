@@ -10,7 +10,7 @@ use AntonyThorpe\Knockout\KnockoutConfirmedPasswordField;
  */
 class KnockoutConfirmedPasswordFieldTest extends SapphireTest
 {
-    public function testKnockoutConfirmedPasswordField()
+    public function testKnockoutConfirmedPasswordField(): void
     {
         $field = KnockoutConfirmedPasswordField::create("MyField", "My Field");
         $fields = $field->children;

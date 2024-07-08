@@ -10,7 +10,7 @@ use AntonyThorpe\Knockout\KnockoutCheckboxField;
  */
 class KnockoutCheckboxFieldTest extends SapphireTest
 {
-    public function testKnockoutCheckboxField()
+    public function testKnockoutCheckboxField(): void
     {
         $field = KnockoutCheckboxField::create("MyField", "This is a checkbox")
             ->setObservable('checkboxField')

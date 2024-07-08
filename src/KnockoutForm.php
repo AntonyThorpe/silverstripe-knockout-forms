@@ -2,47 +2,25 @@
 
 namespace AntonyThorpe\Knockout;
 
+use SilverStripe\Forms\Form;
 /**
  * Adds a submit binding handlier to the form element to capture click/enter events
  * Delivers the form element to the javascript function
  */
-class KnockoutForm extends \SilverStripe\Forms\Form
+class KnockoutForm extends Form
 {
+    protected string $submit = '';
 
     /**
-     * $submit
-     *
-     * @var string the javascript function to run upon a click/enter event
+     * Set the javascript function called upon to run upon a click/enter event
      */
-    protected $submit;
-
-    /**
-     * casting of variables for security purposes
-     *
-     * @see http://docs.silverstripe.org/en/3.1/developer_guides/security/secure_coding/
-     */
-    protected $casting = array(
-        "Submit" => "Varchar"
-    );
-
-    /**
-     * setSubmit
-     *
-     * @param string $input The javascript function called upon form submit
-     * @return $this
-     */
-    public function setSubmit($input)
+    public function setSubmit(string $input): static
     {
-        $this->submit = (string)$input;
+        $this->submit = $input;
         return $this;
     }
 
-    /**
-     * getSubmit
-     *
-     * @return string
-     */
-    public function getSubmit()
+    public function getSubmit(): string
     {
         return $this->submit;
     }

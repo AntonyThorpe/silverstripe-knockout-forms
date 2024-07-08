@@ -11,7 +11,7 @@ use AntonyThorpe\Knockout\KnockoutToggleCompositeButtonField;
  */
 class KnockoutToggleCompositeButtonFieldTest extends SapphireTest
 {
-    public function testKnockoutCompositeButtonField()
+    public function testKnockoutCompositeButtonField(): void
     {
         $field = KnockoutToggleCompositeButtonField::create(
             "MyField",

@@ -10,9 +10,9 @@ use AntonyThorpe\Knockout\KnockoutTextField;
  */
 class KnockoutTextFieldTest extends SapphireTest
 {
-    public function testKnockoutTextField()
+    public function testKnockoutTextField(): void
     {
-        $field = KnockoutTextField::create("MyField", "My Field", null, 50)
+        $field = KnockoutTextField::create("MyField", "My Field", '', 50)
             ->setObservable('spaceship')
             ->setHasFocus(true);
 
