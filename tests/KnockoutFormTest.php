@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AntonyThorpe\Knockout\Tests;
 
 use SilverStripe\Dev\FunctionalTest;
@@ -11,15 +13,13 @@ use AntonyThorpe\Knockout\Tests\KnockoutFormTestController;
  *
  * Controller tests
  */
-class KnockoutFormTest extends FunctionalTest
+final class KnockoutFormTest extends FunctionalTest
 {
-    protected static bool $disable_theme = true;
-
     protected static $extra_controllers = [
         KnockoutFormTestController::class
     ];
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         parent::setUp();
         Config::modify()->set('SSViewer', 'source_file_comments', true);
@@ -27,9 +27,9 @@ class KnockoutFormTest extends FunctionalTest
 
     public function testKnockoutForm(): void
     {
-        $page = $this->get('KnockoutFormTestController');
-        $this->assertEquals(200, $page->getStatusCode(), "a page should load");
-        $body = $page->getBody();
+        $httpResponse = $this->get('KnockoutFormTestController');
+        $this->assertEquals(200, $httpResponse->getStatusCode(), "a page should load");
+        $body = $httpResponse->getBody();
 
         $this->assertStringContainsString(
             'data-bind="submit: addToCart2"',
@@ -127,8 +127,8 @@ class KnockoutFormTest extends FunctionalTest
             'KnockoutToggleCompositeButtonField has an observable of "compositeButtonField"'
         );
         $this->assertSame(
-            substr_count($body, 'label class="form-check-label left"'),
             1,
+            substr_count($body, 'label class="form-check-label left"'),
             'the label element with class "left" appears once'
         );
 

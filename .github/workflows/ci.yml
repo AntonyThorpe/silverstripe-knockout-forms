@@ -6,12 +6,18 @@ on:
   pull_request:
   workflow_dispatch:
 
+permissions: {}
+
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   ci:
+    permissions:
+      pull-requests: read
+      contents: read
+      actions: write
     uses: silverstripe/gha-ci/.github/workflows/ci.yml@v1
     with:
       composer_require_extra:
-        phpunit/phpunit:^9.5
-        php-http/discovery:^1.18.1
-        silverstripe/installer:^5.2.0
+        phpunit/phpunit:^11.3
+        php-http/discovery:^1.20
+        silverstripe/installer:^6.2.0

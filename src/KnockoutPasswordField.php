@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AntonyThorpe\Knockout;
 
 require_once __DIR__ . '/Common.php';
@@ -20,13 +22,14 @@ class KnockoutPasswordField extends PasswordField
     /**
      * KnockoutPasswordField needs either 'value' or 'textInput' as a key for the 'data-bind' HTML attribute
      * @example  data-bind="textInput: password" - the binding type is: textInput.
+     * @param string $value
      */
-    public function __construct(string $name, string|null $title = null, string $value = '')
+    public function __construct(string $name, string|null $title = null, $value = '')
     {
         parent::__construct($name, $title, $value);
         $this->addExtraClass('password');
         $this->setTemplate(KnockoutTextField::class);
-        $this->observable = 'password';
+        $this->setObservable('password');
         $this->setAttribute('spellcheck', 'false');
         $this->setBindingType('textInput');
     }

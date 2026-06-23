@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AntonyThorpe\Knockout\Tests;
 
 use SilverStripe\Dev\SapphireTest;
@@ -8,16 +10,16 @@ use AntonyThorpe\Knockout\KnockoutSwitchField;
 /**
  * KnockoutCheckboxFieldTest
  */
-class KnockoutSwitchFieldTest extends SapphireTest
+final class KnockoutSwitchFieldTest extends SapphireTest
 {
     public function testKnockoutSwitchField(): void
     {
-        $field = KnockoutSwitchField::create("MyField", "This is a switchField")
+        $knockoutSwitchField = KnockoutSwitchField::create("MyField", "This is a switchField")
             ->setObservable('switchField');
 
         $this->assertStringContainsString(
             '<input data-bind="checked: switchField',
-            $field->Field()->getValue()
+            (string) $knockoutSwitchField->Field()->getValue()
         );
     }
 }

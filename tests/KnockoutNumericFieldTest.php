@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AntonyThorpe\Knockout\Tests;
 
 use SilverStripe\Dev\SapphireTest;
@@ -8,26 +10,26 @@ use AntonyThorpe\Knockout\KnockoutNumericField;
 /**
  * KnockoutNumericFieldTest
  */
-class KnockoutNumericFieldTest extends SapphireTest
+final class KnockoutNumericFieldTest extends SapphireTest
 {
     public function testKnockoutNumericField(): void
     {
-        $field = KnockoutNumericField::create("MyField", "My Field", 50)
+        $knockoutNumericField = KnockoutNumericField::create("MyField", "My Field", 50)
             ->setObservable('seatNumber')
             ->setHasFocus(true);
 
         $this->assertEquals(
             "seatNumber",
-            $field->getObservable(),
+            $knockoutNumericField->getObservable(),
             "observable is set"
         );
         $this->assertTrue(
-            $field->getHasFocus(),
+            $knockoutNumericField->getHasFocus(),
             "Focus is set to True"
         );
         $this->assertStringContainsString(
             '<input data-bind="textInput: seatNumber, setKnockout:{value:50}, hasFocus: true"',
-            $field->Field()->getValue()
+            (string) $knockoutNumericField->Field()->getValue()
         );
     }
 }

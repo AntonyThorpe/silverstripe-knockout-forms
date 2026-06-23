@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
+
 namespace AntonyThorpe\Knockout;
 
 require_once __DIR__ . '/Common.php';
 require_once __DIR__ . '/CommonBindingType.php';
+use SilverStripe\Model\ModelData;
 use SilverStripe\Forms\CheckboxField;
-use SilverStripe\View\ViewableData;
 
 /**
  * KnockoutCheckboxField
@@ -19,12 +22,12 @@ class KnockoutCheckboxField extends CheckboxField
 
     /**
      * Set the CSS Class and binding type
+     * @param string $name The internal field name, passed to forms.
+     * @param null|string|ModelData $title The human-readable field label.
+     * @param mixed $value The value of the field.
      */
-    public function __construct(
-        string $name,
-        null|string|ViewableData $title = null,
-        mixed $value = ''
-    ) {
+    public function __construct($name, $title = null, $value = null)
+    {
         parent::__construct($name, $title, $value);
         $this->addExtraClass('form-check-input');
         $this->setBindingType('checked');

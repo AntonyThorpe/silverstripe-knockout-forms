@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AntonyThorpe\Knockout\Tests;
 
 use SilverStripe\Control\HTTPResponse;
@@ -8,7 +10,6 @@ use SilverStripe\Control\Controller;
 use AntonyThorpe\Knockout\KnockoutForm;
 use SilverStripe\View\SSViewer;
 use SilverStripe\Control\HTTPRequest;
-use SilverStripe\Forms\Form;
 use SilverStripe\Forms\FieldList;
 use AntonyThorpe\Knockout\KnockoutTextField;
 use AntonyThorpe\Knockout\KnockoutDropdownField;
@@ -27,7 +28,7 @@ class KnockoutFormTestController extends Controller implements TestOnly
     public function __construct()
     {
         parent::__construct();
-        if (Controller::has_curr()) {
+        if (Controller::curr() instanceof Controller) {
             $this->setRequest(Controller::curr()->getRequest());
         }
     }
@@ -56,7 +57,7 @@ class KnockoutFormTestController extends Controller implements TestOnly
 
     public function Form(): KnockoutForm
     {
-        $form = KnockoutForm::create(
+        $knockoutForm = KnockoutForm::create(
             $this,
             'Form',
             FieldList::create(
@@ -105,14 +106,14 @@ class KnockoutFormTestController extends Controller implements TestOnly
                     ->setObservable('canSaveInterGalacticAction')
             )
         );
-        $form->setSubmit('addToCart2');
+        $knockoutForm->setSubmit('addToCart2');
 
-        return $form;
+        return $knockoutForm;
     }
 
-    public function doSubmit(array $data, KnockoutForm $form, HTTPRequest $request): HTTPResponse
+    public function doSubmit(array $data, KnockoutForm $knockoutForm, HTTPRequest $httpRequest): HTTPResponse
     {
-        $form->sessionMessage('Test save was successful', 'good');
+        $knockoutForm->sessionMessage('Test save was successful', 'good');
         return $this->redirectBack();
     }
 

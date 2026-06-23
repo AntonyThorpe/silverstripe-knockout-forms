@@ -2,7 +2,6 @@
 Provides an enhanced UX for Silverstripe forms using the Knockout MVVM JavaScript library plus an associated validation plugin
 
 [![CI](https://github.com/AntonyThorpe/silverstripe-knockout-forms/actions/workflows/ci.yml/badge.svg)](https://github.com/AntonyThorpe/silverstripe-knockout-forms/actions/workflows/ci.yml)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/AntonyThorpe/silverstripe-knockout-forms/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/AntonyThorpe/silverstripe-knockout-forms/?branch=master)
 [![Latest Stable Version](https://poser.pugx.org/antonythorpe/silverstripe-knockout-forms/v/stable)](https://packagist.org/packages/antonythorpe/silverstripe-knockout-forms)
 [![Total Downloads](https://poser.pugx.org/antonythorpe/silverstripe-knockout-forms/downloads)](https://packagist.org/packages/antonythorpe/silverstripe-knockout-forms)
 [![Latest Unstable Version](https://poser.pugx.org/antonythorpe/silverstripe-knockout-forms/v/unstable)](https://packagist.org/packages/antonythorpe/silverstripe-knockout-forms)
@@ -41,14 +40,14 @@ The recommended approach is to extend an existing Silverstripe field.  Ensure th
 namespace AntonyThorpe\Knockout;
 
 require_once('Common.php');
-use SilverStripe\Forms\????Field;
+use SilverStripe\Forms\????ParentField;
 
 /**
  * Knockout NameOfNewField
  *
  * Creates a {@link NameOfNewField} with an additional data-bind attribute that links to a Knockout observable
  */
-class KnockoutNameOfField extends ????Field
+class KnockoutNameOfField extends ????ParentField
 {
     use \Knockout\Common;
 

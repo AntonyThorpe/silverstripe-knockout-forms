@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AntonyThorpe\Knockout\Tests;
 
 use SilverStripe\Dev\SapphireTest;
@@ -8,11 +10,11 @@ use AntonyThorpe\Knockout\KnockoutOptionsetField;
 /**
  * KnockoutOptionsetFieldTest
  */
-class KnockoutOptionsetFieldTest extends SapphireTest
+final class KnockoutOptionsetFieldTest extends SapphireTest
 {
     public function testKnockoutOptionsetField(): void
     {
-        $field = KnockoutOptionsetField::create(
+        $knockoutOptionsetField = KnockoutOptionsetField::create(
             "MyField",
             "My Field",
             ['Flying High DVD' => 'Flying High DVD', 'Zero Gravity Pillow' => 'Zero Gravity Pillow', 'Rocket Replica' => 'Rocket Replica'],
@@ -23,26 +25,26 @@ class KnockoutOptionsetFieldTest extends SapphireTest
 
         $this->assertEquals(
             "accessories",
-            $field->getObservable(),
+            $knockoutOptionsetField->getObservable(),
             "observable is set"
         );
         $this->assertEquals(
             "blah: someFunction",
-            $field->getOtherBindings(),
+            $knockoutOptionsetField->getOtherBindings(),
             "other bindings are set"
         );
         $this->assertEquals(
             "checked",
-            $field->getBindingType(),
+            $knockoutOptionsetField->getBindingType(),
             "Default Binding Type is set"
         );
         $this->assertTrue(
-            $field->getHasFocus(),
+            $knockoutOptionsetField->getHasFocus(),
             "Focus is set to True"
         );
         $this->assertStringContainsString(
             '<input data-bind="checked: accessories, blah: someFunction"',
-            $field->Field()->getValue()
+            (string) $knockoutOptionsetField->Field()->getValue()
         );
     }
 }

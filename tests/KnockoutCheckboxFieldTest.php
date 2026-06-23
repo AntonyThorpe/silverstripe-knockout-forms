@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AntonyThorpe\Knockout\Tests;
 
 use SilverStripe\Dev\SapphireTest;
@@ -8,37 +10,37 @@ use AntonyThorpe\Knockout\KnockoutCheckboxField;
 /**
  * KnockoutCheckboxFieldTest
  */
-class KnockoutCheckboxFieldTest extends SapphireTest
+final class KnockoutCheckboxFieldTest extends SapphireTest
 {
     public function testKnockoutCheckboxField(): void
     {
-        $field = KnockoutCheckboxField::create("MyField", "This is a checkbox")
+        $knockoutCheckboxField = KnockoutCheckboxField::create("MyField", "This is a checkbox")
             ->setObservable('checkboxField')
             ->setOtherBindings("blah: anotherFunction")
             ->setHasFocus(true);
 
         $this->assertEquals(
             "checkboxField",
-            $field->getObservable(),
+            $knockoutCheckboxField->getObservable(),
             "observable is set"
         );
         $this->assertEquals(
             "blah: anotherFunction",
-            $field->getOtherBindings(),
+            $knockoutCheckboxField->getOtherBindings(),
             "other bindings are set"
         );
         $this->assertEquals(
             "checked",
-            $field->getBindingType(),
+            $knockoutCheckboxField->getBindingType(),
             "Default Binding Type is set"
         );
         $this->assertTrue(
-            $field->getHasFocus(),
+            $knockoutCheckboxField->getHasFocus(),
             "Focus is set to True"
         );
         $this->assertStringContainsString(
             '<input data-bind="checked: checkboxField, blah: anotherFunction',
-            $field->Field()->getValue()
+            (string) $knockoutCheckboxField->Field()->getValue()
         );
     }
 }

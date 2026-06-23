@@ -1,12 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AntonyThorpe\Knockout;
 
 require_once __DIR__ . '/Common.php';
 require_once __DIR__ . '/CommonBindingType.php';
 use ArrayAccess;
 use SilverStripe\Forms\DropdownField;
-
 
 /**
  * KnockoutDropdownField

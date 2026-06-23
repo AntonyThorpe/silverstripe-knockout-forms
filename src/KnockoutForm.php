@@ -1,8 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AntonyThorpe\Knockout;
 
 use SilverStripe\Forms\Form;
+
 /**
  * Adds a submit binding handlier to the form element to capture click/enter events
  * Delivers the form element to the javascript function

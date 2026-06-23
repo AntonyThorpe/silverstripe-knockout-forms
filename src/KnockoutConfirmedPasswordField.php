@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 namespace AntonyThorpe\Knockout;
 
 require_once __DIR__ . '/Common.php';
@@ -25,27 +28,31 @@ class KnockoutConfirmedPasswordField extends ConfirmedPasswordField
      */
     public function __construct(
         string $name,
-        string|null $title = null,
+        ?string $title = null,
         mixed $value = "",
-        Form $form = null,
+        ?Form $form = null,
         bool $showOnClick = false,
-        string|null $titleConfirmField = null
+        ?string $titleConfirmField = null
     ) {
         parent::__construct($name, $title, $value, $form, $showOnClick, $titleConfirmField);
 
         // swap fields for the knockout ones
-        foreach ($this->children as $key => $field) {
-            $knockout_field = KnockoutPasswordField::create(
-                $field->getName(),
-                $field->Title(),
-                $field->Value()
-            );
-            $this->children->replaceField(
-                $field->getName(),
-                $knockout_field
-            );
-            if ($key == 1) {
-                $knockout_field->setObservable('confirmedPassword');
+        foreach ($this->children as $child) {
+            if (str_contains($child->getName(), '[_Password]') ||
+                str_contains($child->getName(), '[_ConfirmPassword]')
+            ) {
+                $knockout_field = KnockoutPasswordField::create(
+                    $child->getName(),
+                    $child->Title(),
+                    $child->getValue()
+                );
+                $this->children->replaceField(
+                    $child->getName(),
+                    $knockout_field
+                );
+                if (str_contains($child->getName(), '[_ConfirmPassword]')) {
+                    $knockout_field->setObservable('confirmedPassword');
+                }
             }
         }
 
@@ -57,9 +64,16 @@ class KnockoutConfirmedPasswordField extends ConfirmedPasswordField
      */
     public function setObservables(array $names): static
     {
-        foreach ($this->children as $key => $field) {
-            $field->setObservable($names[$key]);
+        foreach ($this->children as $child) {
+            if (str_contains($child->getName(), '[_Password]')) {
+                $child->setObservable($names[0]);
+            }
+
+            if (str_contains($child->getName(), '[_ConfirmPassword]')) {
+                $child->setObservable($names[1]);
+            }
         }
+
         return $this;
     }
 
@@ -68,6 +82,15 @@ class KnockoutConfirmedPasswordField extends ConfirmedPasswordField
      */
     public function getObservables(): array
     {
-        return $this->children->column('observable');
+        $toReturn = [];
+        foreach ($this->children as $child) {
+            if (str_contains($child->getName(), '[_Password]') ||
+                str_contains($child->getName(), '[_ConfirmPassword]')
+            ) {
+                $toReturn[] = $child->getObservable();
+            }
+        }
+
+        return $toReturn;
     }
 }

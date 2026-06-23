@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AntonyThorpe\Knockout\Tests;
 
 use SilverStripe\Dev\SapphireTest;
@@ -9,11 +11,11 @@ use AntonyThorpe\Knockout\KnockoutToggleCompositeButtonField;
 /**
  * KnockoutCheckboxFieldTest
  */
-class KnockoutToggleCompositeButtonFieldTest extends SapphireTest
+final class KnockoutToggleCompositeButtonFieldTest extends SapphireTest
 {
     public function testKnockoutCompositeButtonField(): void
     {
-        $field = KnockoutToggleCompositeButtonField::create(
+        $knockoutToggleCompositeButtonField = KnockoutToggleCompositeButtonField::create(
             "MyField",
             "This is a knockout composite button field",
             [
@@ -27,13 +29,13 @@ class KnockoutToggleCompositeButtonFieldTest extends SapphireTest
   }" class="btn btn-primary btn-sm mb-2 ml-2 mr-2" type="button" aria-expanded="false" aria-controls="toggle">
             Yes/No
         </button>',
-            $field->Field()->getValue(),
+            (string) $knockoutToggleCompositeButtonField->Field()->getValue(),
             'Contains a button to show/hide based upon the observable'
         );
 
         $this->assertStringContainsString(
             '<div data-bind="visible: compositeButtonField"',
-            $field->Field()->getValue(),
+            (string) $knockoutToggleCompositeButtonField->Field()->getValue(),
             'Contains the visible data-bind'
         );
     }

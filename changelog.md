@@ -1,11 +1,12 @@
 # Change Log of Silverstripe Knockout Forms
 
+* 5.0.0 Upgrade to SilverStripe 6
 * 4.0.0 Upgrade to PHP 8.1
-* 3.0.0 Updated for SilverStripe 5
+* 3.0.0 Updated to SilverStripe 5
 * 2.3.0 Added KnockoutToggleCompositeButtonField
 * 2.2.0 Added KnockoutSwitchField
 * 2.1.0 Added KnockoutCheckboxField
-* 2.0.0 Updated for SilverStripe 4
+* 2.0.0 Updated to SilverStripe 4
 * 1.3.0 Added KnockoutConfirmedPasswordField and KnockoutPasswordField
 * 1.2.3 Updated classes for PSR-2
 * 1.2.2 Updated module documentation as per Silverstripe's recommendation

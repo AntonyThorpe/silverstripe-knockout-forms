@@ -1,8 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AntonyThorpe\Knockout;
 
 use SilverStripe\Forms\FormAction;
+
 require_once __DIR__ . '/Common.php';
 
 /**
